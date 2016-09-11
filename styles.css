@@ -13,7 +13,6 @@ body{
 }
 #mainpage{
   -webkit-box-shadow: 0 0 15px 2px #000;
-  -moz-box-shadow: 0 0 15px 2px #000;
   box-shadow: 0 0 15px 2px #000;
   border: 2px solid black;
   margin: 0px 0px;
@@ -22,7 +21,7 @@ body{
 }
 section{
   float: right;
-  width: 100%
+  width: 100%;
   margin: 100px 0px;
 }
 .embeddedimg{
