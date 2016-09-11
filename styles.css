@@ -1,0 +1,42 @@
+
+html{
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20pt;
+}
+body{
+  display: block;
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  background-color: #fff;
+}
+#mainpage{
+  -webkit-box-shadow: 0 0 15px 2px #000;
+  -moz-box-shadow: 0 0 15px 2px #000;
+  box-shadow: 0 0 15px 2px #000;
+  border: 2px solid black;
+  margin: 0px 0px;
+  padding: 20px 20px;
+  overflow: hidden;
+}
+section{
+  float: right;
+  width: 100%
+  margin: 100px 0px;
+}
+.embeddedimg{
+  float: right;
+  margin: 30px 30px;
+}
+code{
+  font-family: 'Fira Mono', 'Courier New', monospace;
+}
+h1{
+  font-size: 64px;
+  margin: 30px auto;
+}
+h2{
+  font-size: 40px;
+  border-bottom: 1px solid #888888;
+}
