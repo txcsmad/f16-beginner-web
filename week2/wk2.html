@@ -14,28 +14,28 @@
 		<p>JavaScript objects are quite different from the objects of other languages, so let's get familiar with them. Then we can start using them to actually manipulate HTML on the page.</p>
 		<p>They're a bit like HashMaps, which is to say that we don't need to list variables beforehand. We just create new ones whenever we want inside of out objects but putting a . after the object name.</p>
 		<p><code><pre>
-	//Create a new object with object literal
-	var newObj={};
+  //Create a new object with object literal
+  var newObj={};
 
-	//Create a new variable
-	//called five inside newObj
-	newObj.five=5;
+  //Create a new variable
+  //called five inside newObj
+  newObj.five=5;
 	
-	//Gets five out (which is 5),
-	//adds 1, and puts it in newObj.six
-	newObj.six=newObj.five+1;
+  //Gets five out (which is 5),
+  //adds 1, and puts it in newObj.six
+  newObj.six=newObj.five+1;
 
-	//Using brackets is just as good
-	newObj["six"];  //returns 6
+  //Using brackets is just as good
+  newObj["six"];  //returns 6
 		</pre></code></p>
 	  </section>
 	  <section id="windowAndDocument">
 		<h2>Special Objects</h2>
 		<p>We've actually  been using the <code>window</code> object the whole time! All variables declared with var live there, and any code not assigned to an object automatically gets assigned to it. Let's take a look:</p>
 		<p><code><pre>
-	var variableNamesAreHard=1024;
-	window.variableNamesAreHard++;
-	window["variableNamesAreHard"];
+  var variableNamesAreHard=1024;
+  window.variableNamesAreHard++;
+  window["variableNamesAreHard"];
 		</pre></code></p>
 		<p>Just like that new object we made earlier, except this one has a lot of stuff predefined for you.</p>
 
@@ -43,11 +43,11 @@
 		<p>Let's try it out! The next section has a lot of common HTML tags defined with <code>id</code>s. Pick one and try to change its contents.</p>
 		<p>For example, since Web is the most important thing that MAD does, let's move it to the top of the list that's below, in the Testing Ground section.</p>
 		<p><code><pre>
-	var topOfList=document.getElementById("firstli");
-	var third=document.getElementById("thirdli");
-	var lessImportant=topOfList.innerText;
-	topOfList.innerText=third.innerText;
-	third.innerText=lessImportant;
+  var topOfList=document.getElementById("firstli");
+  var third=document.getElementById("thirdli");
+  var lessImportant=topOfList.innerText;
+  topOfList.innerText=third.innerText;
+  third.innerText=lessImportant;
 		</pre></code></p>
 	  </section> 
 	  <section id="testingGround">
