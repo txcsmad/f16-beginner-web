@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test your idea!</title>
+		<style>
+			body {
+   				 background-color: #d0e4fe;
+			}
+			p{
+				font-family: "Times New Roman";
+				font-size: 30px;
+				text-align:center;
+			}
+		</style>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<p>
+			Points left: <span id="pointsLeft"> 30 </span>
+		</p>
+		<p>
+			<span id="f1txt">Transfer Payments</span>
+			<button id="f1 -" class="btn btn-danger">-</button>
+
+			<span id="f1val">0</span>
+
+			<button id="f1 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f2txt">Technology</span>
+			<button id="f2 -" class="btn btn-danger">-</button>
+ 
+			<span id="f2val">0</span>
+ 
+			<button id="f2 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f3txt">New High Tech Company</span>
+			<button id="f3 -" class="btn btn-danger">-</button>
+ 
+			<span id="f3val">0</span>
+ 
+			<button id="f3 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f4txt">Education</span>
+			<button id="f4 -" class="btn btn-danger">-</button>
+ 
+			<span id="f4val">0</span>
+ 
+			<button id="f4 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f5txt">Tax Credit</span>
+			<button id="f5 -" class="btn btn-danger">-</button>
+ 
+			<span id="f5val">0</span>
+ 
+			<button id="f5 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f6txt">Existing Businesses</span>
+			<button id="f6 -" class="btn btn-danger">-</button>
+ 
+			<span id="f6val">0</span>
+ 
+			<button id="f6 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f7txt">Public Relations</span>
+			<button id="f7 -" class="btn btn-danger">-</button>
+ 
+			<span id="f7val">0</span>
+ 
+			<button id="f7 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f8txt">Points from Speech</span>
+			<button id="f8 -" class="btn btn-danger">-</button>
+ 
+			<span id="f8val">0</span>
+ 
+			<button id="f8 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<span id="f9txt">Voting</span>
+			<button id="f9 -" class="btn btn-danger">-</button>
+ 
+			<span id="f9val">0</span>
+ 
+			<button id="f9 +" class="btn btn-success">+</button>
+		</p>
+		<p>
+			<button id=outButton class="btn btn-info btn-lg">Calculate</button>
+		</p>
+<p>Y1: <span id="Y1">0</span></p>
+<p>Y3: <span id="Y3">0</span></p>
+<p>Y5: <span id="Y5">0</span></p>
+<p>Real Utility: <span id="RU">0</span></p>
+<p>Expected Utility: <span id="EU">0</span></p>
+<p>Final Score: <span id="Final">0</span></p>
+<script>
+function update(event){
+	var name=event.target.id;
+	var vals=name.split(" ");
+
+	switch(vals[1])
+	{
+		case "+" : 
+			var inc=document.getElementById(vals[0]+"val");
+if((document.getElementById("pointsLeft").innerText>0 || parseInt(vals[0].substring(1,2))>7 && inc.innerText<parseInt(vals[0].substring(1,2))>8) ? 16 : 10){
+			inc.innerText++;
+			if(parseInt(vals[0].substring(1,2))<7)
+				document.getElementById("pointsLeft").innerText--;
+}
+
+
+		break;
+
+		case "-" : 
+		var dec=document.getElementById(vals[0]+"val");
+		if(dec.innerText>0){
+			dec.innerText--;
+			if(parseInt(vals[0].substring(1,2))<7)
+				document.getElementById("pointsLeft").innerText++;
+
+		}
+
+		break;
+	}
+
+}
+
+function y(args, time){
+	var t=time+1;	
+	var exp=(args["New High Tech Company"]/55.0)*t+0.5;
+	
+	var A=(Math.pow(0.55*args["Transfer Payments"], 1.0/t));
+	A+=Math.pow(args["Technology"], exp);
+	A+=Math.pow(args["Education"], exp);
+	A+=(Math.pow(0.75*args["Tax Credit"], 1.0/t));
+	A/=10;
+	
+	var B=args["New High Tech Company"]/5.0+1
+	B*=Math.pow(20, 0.03*t+0.5);
+	B*=(Math.pow(6*args["Existing Businesses"]+1,0.002*t+0.4));
+	B/=10;
+	
+	return Math.floor(A*B*1000)/1000.0;
+	
+}
+
+var numLines=10;
+var input={};
+
+function calculate(event){
+	for(var i=1; i<numLines; i++){
+		input[document.getElementById("f" + i + "txt").innerText]=parseInt(document.getElementById("f" + i + "val").innerText);
+	}
+	input["Public Relations"]=input["Public Relations"]*2/3.0+input["Points from Speech"]*1/3.0;
+	
+	var outputFinal=0;
+	for(i=1; i<=5; i+=2)
+	{
+		var outputFinal=outputFinal+y(input,i)
+		document.getElementById("Y"+i).innerText=y(input,i);
+	}
+	
+	var ru=Math.floor((Math.pow(outputFinal, 0.75)*0.8+input["Transfer Payments"]/12.0)*1000)/1000.0;
+	var eu=Math.floor(Math.pow(ru,0.75)*(input["Public Relations"]/5.0+0.2)*1000)/1000.0;
+
+
+	document.getElementById("RU").innerText=ru;
+	document.getElementById("EU").innerText=eu;
+	document.getElementById("Final").innerText=eu*0.7+input["Voting"]*0.3;
+}
+
+for(var i=1; i<numLines; i++){
+	document.getElementById("f" + i + 
+" +").addEventListener("click", update);
+	document.getElementById("f" + i + " -").addEventListener("click", update);
+
+}
+
+document.getElementById("outButton").addEventListener("click", calculate);
+ </script>
+	</body>
+</html>
