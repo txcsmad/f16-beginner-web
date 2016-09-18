@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Intro To Web 3</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+	  <section id="titleSection">
+		<h1>Lesson 3: Functions</h1>
+		<p>Last week we saw how to access elements of our page through JavaScript. That's not very useful on its own, though, because we need to know <i>when</i> to change the page based on some form of user input.</p>
+		<p>That's what we'll look at today: How to get input from the user and then act on that input to make the page look different as necessary.</p>
+	  </section>
+	  <section id="functions">
+      <h2>Functions</h2>
+		<p>JavaScript functions are actually just another kind of object. They have a special way to make them though. Let's take a look:</p>
+		<p><code><pre>
+  var max=function(a, b){
+      if(a >= b){
+          var bigger=a;
+      }	else {
+          var bigger=b;
+      }
+      return bigger;
+  }
+		</pre></code></p>
+		<p>This function takes in two things, a and b. It checks if a is bigger than or equal to b. If it is, bigger is set to a. Otherwise it is set to b. Then bigger is <i>returned</i>. Just like a math function, you can have as many inputs as you'd like, and you can do whatever you want to them, but in the end, you return at most one thing. That's the output of the function.</p>
+		<img src="http://kylefdoherty.github.io/images/js_function_anatomy.png">
+		<p>If you're surprised the max function worked, that's because JavaScript defines <i>scope</i> differently than most languages. Any variable you create will go away at the end of the function, but stick around until then.</p>
+		<p>If you don't like storing variables in functions, this does the same thing:</p>
+		<p><code><pre>
+  function max(a, b){
+     //Rest of code goes here
+  }
+		</pre></code></p>
+		<p>If you want to accept a variable number of arguments, you can do that too:</p>
+		<p><code><pre>
+  var max=function(){
+    var maxSoFar=arguments[0];
+	for each(x in arguments){
+	    if(x>maxSoFar){
+		    maxSoFar=x;
+		}
+    }
+    return maxSoFar;	
+  }
+		</pre></code></p>
+		<p>This one shows that the arguments all go in an array that we can access with [ ] like we did for objects. This is harder to read, so don't use it unless you really can't know the number of arguments beforehand.</p>
+		<p>This also shows the for-each loop of JavaScript. It just takes each value in arguments, one at a time, puts it in x, and then runs the code.</p>
+	  </section>
+	  <section id="callbacks">
+		<h2>Callbacks</h2>
+		<p>Functions are objects now, so what can we do with that? It turns out that a lot of code becomes more intuitive when you have <i>callbacks</i> or the ability to pass functions as function arguments.</p>
+		<p><code><pre>
+  var popup=function(){
+      alert("I am an annoying popup.");			  
+  }
+
+  //Triggers annoying popup
+  //2000 ms after code runs
+  setTimeout(popup, 2000);
+		</pre></code></p>
+		<p>That's pretty nice. I want to do something exactly 2 seconds from now, so I just say I want to run the given function in that amount of time.</p>
+		<p>However, there is a very good reason why Java doesn't support them. That reason is named <strong><i>CALLBACK HELL</i></strong>.</p>
+		<img src="http://i.imgur.com/MByWioX.png">
+		<p>The easiest way to avoid this is to not define <i>anonymous functions</i>. This programmer wrote a function straight into another one instead of separating it out. It's not a perfect fix, but doing that will make this code much better.</p>
+	  </section>
+	  <section id="eventListeners">
+		<h2>Buttons</h2>
+		<p>The most common way to use callbacks on your webpage, though, is for <i>event listeners</i>. The name is quite literal-event listeners wait for some defined event to happen, like the user clicking a button, and then do something based on that event.</p>
+		<p><code><pre>
+  var button=document.getElementById("b1");
+
+  var listener=function(){
+          alert("Hello World!");
+      }
+
+  button.addEventListener("click", button);
+		</pre></code></p>
+		<p>Now you can recieve input from the user using event listeners and then change the page based on what they clicked. Since each button can get its own function, they can do whatever you tell them to.</p>
+		<p></p>
+	  </section>
+	  <section id="buttonPractice">
+		<h2>Button Practice</h2>
+		<p>Try it out! The first and second buttons are examples that are already written. The first one tells you a little bit about your computer, and the second one redirects you to the MAD site after 2 seconds. Look at the code to see how to do it and then write your own functions to attach to buttons.</p>
+		<p>You can use <code>removeEventListener(HTMLObjectName)</code> to get rid of event listeners that are already there, but in case you don't want to, there are plenty of buttons for you to assign.</p>
+		<button id="myExample">This is an example button.</button>
+		<button id="myExample2">This button makes you leave the page.</button>
+		<br>
+		<button id="b1">Click me!</button>
+		<button id="b2">Click me!</button>
+		<button id="b3">Click me!</button>
+		<button id="b4">Click me!</button>
+		<button id="b5">Click me!</button>
+		<button id="b6">Click me!</button>
+	  </section>
+	</div>
+
+	<script>
+	  var exampleListener=function(){
+	      var out="Your browser tells me that you use " + navigator.oscpu + " on your computer.\n";
+	      out+="The language is set to " + navigator.language + ".\n"
+	      var newText=document.createElement("p");
+	      newText.innerText=out;
+          newText.id="browserInfo";
+
+	      var textToAdd=document.getElementById("browserInfo"); 
+          var buttonSection=document.getElementById("buttonPractice");
+	      if(textToAdd == null){
+              buttonSection.appendChild(newText);
+              scrollBy(0, 100);
+	      } else if (textToAdd.innerText === out) {
+	          textToAdd.innerText="You already clicked the button!";
+	      } else {
+	          textToAdd.innerText="It's just going to stay like this now.";
+	      }
+           
+	  }
+
+	  document.getElementById("myExample").addEventListener("click", exampleListener);
+
+	  var redirectExample=function(){
+	      var goToMAD=function(){
+	          location.href="http://txcsmad.com";
+	      }
+	      setTimeout(goToMAD, 2000);
+	  }
+
+	  document.getElementById("myExample2").addEventListener("click", redirectExample);
+	</script>
+   </body>
+</html>
+
+	  
