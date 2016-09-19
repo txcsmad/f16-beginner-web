@@ -18,11 +18,11 @@
       <h2>Functions</h2>
 		<p>JavaScript functions are actually just another kind of object. They have a special way to make them though. Let's take a look:</p>
 		<p><code><pre>
-  var max=function(a, b){
-      if(a >= b){
-          var bigger=a;
+  var max = function(a, b) {
+      if (a >= b) {
+          var bigger = a;
       }	else {
-          var bigger=b;
+          var bigger = b;
       }
       return bigger;
   }
@@ -32,30 +32,31 @@
 		<p>If you're surprised the max function worked, that's because JavaScript defines <i>scope</i> differently than most languages. Any variable you create will go away at the end of the function, but stick around until then.</p>
 		<p>If you don't like storing variables in functions, this does the same thing:</p>
 		<p><code><pre>
-  function max(a, b){
+  function max(a, b) {
      //Rest of code goes here
   }
 		</pre></code></p>
 		<p>If you want to accept a variable number of arguments, you can do that too:</p>
 		<p><code><pre>
-  var max=function(){
-    var maxSoFar=arguments[0];
-	for each(x in arguments){
-	    if(x>maxSoFar){
-		    maxSoFar=x;
-		}
-    }
-    return maxSoFar;	
+  var max = function() {
+	var maxSoFar = arguments[0];
+	for (x in arguments){
+	    if (arguments[x] > maxSoFar) 
+		    maxSoFar = arguments[x];
+	}
+	return maxSoFar;	
   }
 		</pre></code></p>
-		<p>This one shows that the arguments all go in an array that we can access with [ ] like we did for objects. This is harder to read, so don't use it unless you really can't know the number of arguments beforehand.</p>
-		<p>This also shows the for-each loop of JavaScript. It just takes each value in arguments, one at a time, puts it in x, and then runs the code.</p>
+		<p>This function shows that the arguments are stored in an array-like object with numbers as keys and arguments as values. If the 
+		max function is called with the arguments 4, 8, 15, 16, 23, 42, the arguments objects will be stored as: {'0': 4, '1': 8, '2': 15, '3': 16, '4': 23, '5': 42}
+		</p>
+		<p>This also shows the for-each loop of JavaScript. It just takes each of the keys in arguments, one at a time, puts it in x, and then runs the code. If arguments were a simple array, then the x would contain the values in the array.</p>
 	  </section>
 	  <section id="callbacks">
 		<h2>Callbacks</h2>
 		<p>Functions are objects now, so what can we do with that? It turns out that a lot of code becomes more intuitive when you have <i>callbacks</i> or the ability to pass functions as function arguments.</p>
 		<p><code><pre>
-  var popup=function(){
+  var popup = function() {
       alert("I am an annoying popup.");			  
   }
 
@@ -72,11 +73,11 @@
 		<h2>Buttons</h2>
 		<p>The most common way to use callbacks on your webpage, though, is for <i>event listeners</i>. The name is quite literal-event listeners wait for some defined event to happen, like the user clicking a button, and then do something based on that event.</p>
 		<p><code><pre>
-  var button=document.getElementById("b1");
+  var button = document.getElementById("b1");
 
-  var listener=function(){
+  var listener = function(){
           alert("Hello World!");
-      }
+  }
 
   button.addEventListener("click", button);
 		</pre></code></p>
