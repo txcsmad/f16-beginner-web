@@ -1,0 +1,44 @@
+<!-- This is an HTML comment. I'll discuss what I did in these. -->
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- This is the head of the page. General info about the page lives here. Charset specifies what encoding your document is in (everyone uses UTF8 these days), link attaches the stylesheet, and title sets what the tab text is in your browser. -->
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<title>My First Page</title>
+  </head>
+  <body>
+	<!-- This is the body of the webpage. It holds all the stuff you actually see on the page. Some common tags often used in the body, for reference:
+		h1: Title. Goes up to h6 for 6 different kinds.
+	    p: paragraph
+	    a: link
+	    img: image
+	    ul: unordered (bulleted) list
+	    ol: ordered (numbered) list
+	    li: list element
+		If you want to do something in particular, most of it is online. For example, forms are a little tricky, so I just google "HTML form" and copypaste if I need one.
+		I'd show a form, but we'd need to send the data to a server, which we don't have.
+	  -->
+	<h1>Webpage</h1>
+	<p id="hello">This is my first webpage!</p>
+
+	<!-- I've made the page pretty inconsistent with how I do things to show how a lot of this stuff works. If you're actually coding a webpage, you'd want to be as consistent as possible. -->
+	<p id="firstpara" class="isGreen bigText">Hello World!</p>
+	<p id="secondpara" class="bigText">This is to demonstrate more classes.</p>
+	<p id="thirdpara" class="isGreen">I could've wrtten anything here, really.</p>
+	<p id="fourthpara" class="normal">I just couldn't think of anything.</p>
+	<p id="fifthpara" class="normal">Modify this as much as you'd like! You can always redownload it if something goes terribly wrong.</p>
+	  
+	<p>Some of my favorite sites are:</p>
+	<ul>
+	  <li><a href="http://txcsmad.com" class="isGreen">The MAD site</a></li>
+	  <li><a href="http://google.com">Google</a></li>
+	  <li class="bigText"><a href="http://github.com">GitHub</a></li>
+	</ul>
+
+	<button id="test">Click!</button>
+	<button id="magic">This button is magic!</button>
+	<!-- Loading the script at the end is a good idea because loading scripts takes a while. If the page doesn't need the JavaScript to work, it's a good idea. This way, your page doesn't lag trying to run all your code while the page is still getting all the text on the screen. -->
+	<script src="script.js"></script>
+  </body>
+</html>

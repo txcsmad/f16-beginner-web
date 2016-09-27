@@ -1,0 +1,51 @@
+/* This is a CSS comment. I'll explain what I'm doing in these. */
+
+/* This first line is a CSS selector. It says what kind of HTML you want to want to attach your CSS code to. Then you list all the style you want to use for that element. */
+
+/* This selects all HTML surrounded with a p tag. */
+
+p{
+	font: 1em Arial, Helvetica, sans-serif;
+	/* CSS styles of similar types often get bundled together. For example, the font attribute actually is the same as:
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;*/
+	color: gray;
+}
+
+/* If you want to apply CSS styles to only classes you choose, classes are the best way to go about it. You add any classes that you want to the element in HTML and all styles in the class apply to that element. */
+
+/* Selects all elements with the isGreen class. */
+.isGreen{
+	color: green;
+}
+
+/* Selects all elements with the bigText class. */
+.bigtext{
+	font-size: large;
+}
+
+/* Uses the box model to add some space around each li. */
+li{
+	padding: 5px 5px;
+	margin: 30px 30px;
+	border: 1px solid;
+}
+
+/* Turns off a lot of the styles. */
+.normal{
+	color: black;
+	font-size: medium;
+}
+
+/* Makes a given element vanish */
+.gone{
+	display: none;
+}
+
+/* Centers all h1s */
+h1{
+	text-align: center;
+}
+
+
+

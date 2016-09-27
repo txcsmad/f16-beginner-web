@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Intro To Web 3</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+	  <section id="titleSection">
+		<h1>Lesson 4: Webpages</h1>
+		<p>We're finally at the level where we can make our own webpages! This process is a bit messy and complicated, though, so let's try to understand every step of the way.</p>
+		<p>If you haven't already, download a text editor of some sort. I recommend <a href="https://sublimetext.com">Sublime Text 3</a> since it's pretty popular for web development and for coding in general if you don't have a dedicated IDE.</p>
+	  </section>
+	  <section id="css">
+		<h2>CSS</h2>
+		<p>Before we get there, though, there's one last component of webpages we haven't spent very much time on: CSS. This is how we make our page look nice.</p>
+		<p>The CSS has two main components: the selector and the specific style. The style tells our page what we want a given element to look like, and the selector tells our page which elements to apply those styles to.</p>
+		<p><code><pre>
+  /* Applied to all h1 */
+  h1{
+    font-size: 64px;
+    margin: 30px auto;
+  }
+		</pre></code></p>
+		<p>The styles themselves, though, don't really have any consistent rules. This is where MDN becomes very useful. It usually lists what you can do for each style.</p>
+	  </section>
+	  <section>
+		<h2>Classes</h2>
+		<p>It's fine to add to specific kinds of elements, but it's even more helpful to decide which elements get a given style.</p>
+		<p>That's where HTML <i>classes</i> come in.</p>
+		<p><code><pre>
+  /* Defines a CSS class called embeddedimg */
+  .embeddedimg{
+    float: right;
+    margin: 30px 30px;
+  }
+
+  And in your HTML:
+  
+  &lt;img class="embeddedimg" ... &gt; 
+        </pre></code></p>
+		<p>So we can add a given set of styles arbitrarily by adding the class tag to our HTML.</p>
+	  </section>
+	  <section>
+		<h2>Modifying with JavaScript</h2>
+		<p id="toModify">All these styles are useful, but they really get interesting when we can modify them with our JavaScript.</p>
+		<p>The best way to do that is with classes:</p>
+		<p><code><pre>
+  var para = document.getElementById("toModify");
+  para.classList.add("testClass");
+		</pre></code></p>
+		<p>You can add individual styles through Javascript, but it gets messy. Classes are a way to not have to worry about individual styles while writing JavaScript.</p>
+		<p>If we want to switch back and forthe between two states, the toggle function becomes helpful:</p>
+		<p><code><pre>
+  //Removes the class if it's there
+  //And adds it if it's not.			  
+  para.classList.toggle("testClass");
+		</pre></code></p>
+	  </section>
+	  <section id="makePage">
+		<h2>Make Your Own</h2>
+		<p>Try experimenting as much as possible. I've tried to explain as much as I can in the comments on the page, but this is a lot to take in. The best way to get familiar with building a page is to try it after all. </p>
+		<p>Get the starter files that give examples of some things we've already done <a href="https://github.com/txcsmad/f16-beginner-web/tree/master/week4/starterCode">here</a>.</p>
+	  </section>
+	</div>
+   </body>
+</html>
+
+	  
