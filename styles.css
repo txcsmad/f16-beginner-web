@@ -39,3 +39,8 @@ h2{
   font-size: 40px;
   border-bottom: 1px solid #888888;
 }
+.testClass{
+	float: right;
+	background-color: blue;
+	color: white;
+}
