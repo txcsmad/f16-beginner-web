@@ -21,7 +21,7 @@ magic.addEventListener("click", buttonchange);
 
 var changeClass = function(){
 	// Get the HTML element using its id
-	var para = document.getElementById("firstpara");
+	var para = document.getElementById("imgtext");
 
 	// Toggle turns the class off if it's there, and
 	// turns it on if it's not.''
