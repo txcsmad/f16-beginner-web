@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Intro To Web 5</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+	  <section id="titleSection">
+		<h1>Lesson 5: </h1>
+		<p>This week, the goal is to learn some techniques to make our pages better and more powerful.</p>
+	  </section>
+	  <section id="boxModel">
+		<h2>Box Model</h2>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Boxmodell-detail.png">
+		<p>When the browser creates a given HTML page, it represents all the elements as boxes on the screen. </p>
+		<p>Each of the styles that change how the box looks-padding, border, and margin-can be set in CSS.</p>
+		<p><code><pre>
+  p{
+    padding: 10px 5px;
+    margin: 0px 10px 30px 6px;
+    border: 1px solid black;
+  }
+		</pre></code></p>
+		<p>If four values are listed, the order is top, right, bottom, left.</p>
+		<p>If two values are listed, the first is the top and bottom and the second is left and right.</p>
+		<p>If one value is listed, they're all the same.</p>
+	  </section>
+	  <section id="flex">
+		<h2>Flexbox</h2>
+		<p>Another common styling tool is called Flexbox. It make general page layout much easier by creating a system of rows and columns for your elements to go in.</p>
+		<img src="http://blog.teamtreehouse.com/wp-content/uploads/2012/12/flexbox-justify.png">
+		<p>By default, HTML arranges items top to bottom. Flexbox allows items to be arranged horizontally very easily, and even allows items to wrap to the next line.</p>
+	  </section>
+	  <section id="ajax">
+		<h2>AJAX</h2>
+		<p>Any time you go on the Internet, you ask a <i>server</i> for some file you want. The server then responds with what is probably an HTML file, which then gets displayed on your browser. We wrote one of those pages last week.</p>
+		<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format. </p>
+		<img src="json.png">
+		<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
+		<p>The way the page can ask for data is with an HTTP request:</p>
+		<p><code><pre>
+  var req = new XMLHttpRequest();
+  req.open("GET", "URL");
+  req.send();
+  var gotData = function(){
+      if(this.readyState == 4 && this.status == 200){
+          var data = JSON.parse(this.responseText);
+          // Can modify page based on data here
+      } 
+  }
+  this.onReadyStateChange = gotData;
+		</pre></code></p>
+		<p>This is usually used to communicate with the computer that your HTML files are on. While these requests can technically be made to any computer connected to the Internet, doing so from inside your browser is a security risk, so most browsers and sites prevent it from happening.<p>
+		<p>Instead, many sites have APIs you can use, and most of them make it free for the first few thousand requests per day. After that, you're probably running a successful website and the company running the service charges based on the number of requests. Some of these also prevent you from making requests from in the browser, </p>
+		<p>A good example of what is available is the <a href="https://developers.google.com/maps/">Google Maps API</a>.</p>
+	  </section>
+	  <section>
+		<h2>Try it Out</h2>
+		<p>There is a demo page for the CSS and AJAX on <a href="https://github.com/txcsmad/f16-beginner-web">GitHub</a>.</p>
+		<p></p>
+	  </section>
+	</div>
+   </body>
+</html>
+
+	  
