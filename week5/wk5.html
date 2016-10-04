@@ -44,12 +44,12 @@
 		<p>The way the page can ask for data is with an HTTP request:</p>
 		<p><code><pre>
   var req = new XMLHttpRequest();
-  req.open("GET", "URL");
+  req.open("GET", "https://txcsmad.github.io/
+            f16-beginner-web/week1/wk1.html");
   req.send();
   var gotData = function(){
       if(this.readyState == 4 && this.status == 200){
-          var data = JSON.parse(this.responseText);
-          // Can modify page based on data here
+  
       } 
   }
   this.onReadyStateChange = gotData;
