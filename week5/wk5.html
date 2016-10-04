@@ -43,16 +43,18 @@
 		<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
 		<p>The way the page can ask for data is with an HTTP request:</p>
 		<p><code><pre>
-  var req = new XMLHttpRequest();
-  req.open("GET", "https://txcsmad.github.io/
-            f16-beginner-web/week1/wk1.html");
-  req.send();
   var gotData = function(){
       if(this.readyState == 4 && this.status == 200){
-  
+          window.data = JSON.parse(this.responseText);
       } 
   }
-  this.onReadyStateChange = gotData;
+  
+  var req = new XMLHttpRequest();
+  req.open("GET", "week5/example.json");
+  req.overrideMimeType("application/json");
+  
+  req.onreadystatechange = gotData;
+  req.send();
 		</pre></code></p>
 		<p>This is usually used to communicate with the computer that your HTML files are on. While these requests can technically be made to any computer connected to the Internet, doing so from inside your browser is a security risk, so most browsers and sites prevent it from happening.<p>
 		<p>Instead, many sites have APIs you can use, and most of them make it free for the first few thousand requests per day. After that, you're probably running a successful website and the company running the service charges based on the number of requests. Some of these also prevent you from making requests from in the browser, </p>
@@ -66,5 +68,3 @@
 	</div>
    </body>
 </html>
-
-	  
