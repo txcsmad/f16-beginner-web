@@ -7,7 +7,7 @@ var noData = function(){
 	fakeCoords.coords = {};
 	fakeCoords.coords.longitude = -97.736613;
 	fakeCoords.coords.latitude = 30.286281;
-	makeRequest(fakeCoords);
+	createRequest(fakeCoords);
 }
 
 var gotData = function(){
@@ -22,7 +22,7 @@ var gotData = function(){
 	} 
 }
 
-var makeRequest = function(position){
+var createRequest = function(position){
 	var latlong = position.coords.latitude + "," + position.coords.longitude;
 
 	var req = new XMLHttpRequest();
@@ -39,7 +39,7 @@ var activate = function(){
 		} else*/
 	/* Most APIs require you to get a key so they can keep track of how many requests you're making. I assumed Google did this, but turns out that they will track you based on IP if you don't provide one. Since I don't want to put my key up for everyone, I just left it blank. The site will still work fine, but it's not good practice to regularly do this. It's also not good practice to make these kinds of requests from inside the webpage, since people can steal your keys, but this is for demonstration purposes. */
 	if(loc.innerText == ""){
-		navigator.geolocation.getCurrentPosition(makeRequest, noData);
+		navigator.geolocation.getCurrentPosition(createRequest, noData);
     } else {
 		loc.innerText += "\nYou already got the address!";
 	}
