@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Intro To Web 5</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+	  <section id="titleSection">
+		<h1>Lesson 6: HTTP In Depth</h1>
+		<p>Almost any HTML file was designed to be used with the Internet, over a protocol known as HTTP. Knowing how it works give you additional tools to make your site.</p>
+	  </section>
+	  <section id="networking">
+		<h2>Client-Server Architecture</h2>
+		<img class="embeddedimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/500px-Client-server-model.svg.png">
+		<p>The Internet works on a <i>client server model</i>, where anyone who tries to access a webpage makes an <i>HTTP request</i> to a computer across the Internet. That computer is called a server and provides a <i>response</i> in the form of some data. This data is often an HTML page.</p>
+	  </section>
+	  <section id="stateless">
+		<h2>Preserving State</h2>
+		<p>HTTP is called a <i>stateless protocol</i> because it can't remember what has already happened. Once you get a given webpage, the server forgets who you are.</p>
+		<p>Then how can we preserve data like login information in between webpage requests?</p>
+		<img src="http://josh.webanalyticsdemystified.com/wp-content/uploads/2014/10/cookies.png">
+		<p>The most common way is to use <i>cookies</i>, small pieces of data that get sent to the server every time a request is made to it. This allows the server to keep a list of people it is currently in contact with.</p>
+		<p><code><pre>
+  document.cookie = "test=5"
+  document.cookie = "test2=hello"			 
+		</pre></code></p>
+		<p>While assigning cookies is that simple (if you want to use all the default settings), retrieving them <a href="https://www.sitepoint.com/how-to-deal-with-cookies-in-javascript/">can be a pain</a>.</p>
+		<p><code><pre>
+  function getCookie(name) {
+      // This is just magic, really
+      var regexp = new RegExp("(?:^" + name + "|;\s*"
+                    + name + ")=(.*?)(?:;|$)", "g");
+      var result = regexp.exec(document.cookie);
+      return (result === null) ? null : result[1];
+  }
+		</pre></code></p>
+		<p>As a result, cookies are usually handled server-side, where they are much easier to work with. If you need to work with them in the browser, it is probably best to Google how to access them.</p>
+		<p>Cookies aren't the only way to keep information between sessions, though. Cookies are always sent to the server so that the server can see who they are talking to, but if the information only needs to be kept locally, there are alternatives. Both localStorage and sessionStorage are kept in browser and provide a form of memory for the browser.</p>
+		<p><code><pre>
+  sessionStorage.setItem("test", 5);
+  localStorage.setItem("test2", "hello");
+
+  // returns "5"
+  sessionStorage.getItem("test");
+		</pre></code></p>
+		<img src="http://5823-presscdn-0-11.pagely.netdna-cdn.com/wp-content/uploads/2013/10/localstorage.jpg">
+		<p>It is important to note that localStorage remains until the clear() function is called with it (or the user clears the data in their browser), while sessionStorage only remains until the browser is closed and reopened. Both can only store strings, so any other kind of data will be converted to a string when put into storage.</p>
+	  </section>
+	  <section id="example">
+		<h2>Try It Out</h2>
+		<p>The <a href="https://github.com/txcsmad/f16-beginner-web">starter code today</a> is the same as last time, but with localStorage, we can now keep the data recieved for future reference. Try modifying the code to keep important data you get from the server.</p>
+	  </section>
+	</div>
+   </body>
+</html>
