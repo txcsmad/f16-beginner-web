@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>APIs</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <section id="titleSection">
+		<h1>API Workshop</h1>
+		<p>APIs allow our programs to easily get information from the Internet, meaning that we can get any kind of information we'd like and use it in our programs. Let's see how the work and how we can use them to make our programs better.</p>
+	  </section>
+	  <section id="networking">
+		<h2>Client-Server Architecture</h2>
+		<img class="embeddedimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/500px-Client-server-model.svg.png">
+		<p>The Internet works on a <i>client server model</i>, where anyone who tries to access a webpage makes an <i>HTTP request</i> to a computer across the Internet. That computer is called a server and provides a <i>response</i> in the form of some data. This data is often an HTML page.</p>
+	  </section>
+	  <section id="ajax">
+		<h2>Making Requests</h2>
+		<p>HTML pages are great for people to read. We can apply all sorts of fancy animations and colors to make our webpages easy to read and appealing for people to look at.</p>
+		<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format if requested.</p>
+		<img src="json.png">
+		<p>This format is standardized, so someone already wrote something to convert to and from this format in many different languages.</p>
+		<p>The way the page can ask for data is by assembling our own HTTP request. Here's how to do it in JavaScript:</p>
+		<p><code><pre>
+  var req = new XMLHttpRequest();
+  req.open("GET", "example.json");
+  req.overrideMimeType("application/json");
+  req.send();
+
+  // To look at the data:
+  req.responseText
+		</pre></code></p>
+		<p>To prevent you from sending a million requests and taking the site down, many APIs make sure that any developers who want to access it get a <i>key</i>. A key is just a random string of characters assigned to you that you send in your URL every time. Most of these APIs make the first few thousand requests per day free for testing purposes. Once you move past that limit, they charge per request.</p>
+		<p>Many of these APIs are quite complicated, so it's good to start on one that's much easier to work with. <a href="http://pokeapi.co">PokeAPI</a> is a good one because what it's sending is pretty easily understandable.</p>
+		<p>A good example of what you can do with these requests is the <a href="https://developers.google.com/maps/">Google Maps API</a>. This one's a little more complicated and uses a key to authenticate your access.</p>
+	  </section>
+	  <section id="tryItOut">
+		<h2>Try it Out</h2>
+		<p>The best way to get familiar with making requests is to try it.</p>
+		<p>Many scripting languages have the capability of sending HTTP requests, and a quick Google search will find most of the information you need to know. For this example, though, we are using JavaScript because everyone can run it in their browser.</p>
+	  </section>
+	</div>
+   </body>
+</html>

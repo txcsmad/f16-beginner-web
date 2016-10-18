@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Intro To Web 7</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+  	<div id="mainpage">
+	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+	  <section id="titleSection">
+		<h1>Lesson 7: Finishing Front End</h1>
+		<p>Next week, we're going to move to server-side web development. For now, though, there are a few more features of front-end web pages that are good to know.</p>
+	  </section>
+	  <section id="async">
+		<h2>Asynchronous functions</h2>
+		<p>Programs are considered <i>asynchronous</i> when the code executes in a different order than it's written. We do that so we can execute other statements while waiting.</p>
+		<p>We've already looked a little at JavaScript asynchronous functions like setInterval and setTimeout, but let's take a proper look at it.</p>
+		<img src="diagram.jpg" width="700" height="400"></img>
+		<p>JavaScript isn't actually asynchronous, that is, it doesn't switch back and forth between two tasks. Instead, it maintains an event queue. Functions like setTimeout tell the queue to add a certain function after a given amount of time.</p>
+		<p><code><pre>
+  // Will output "Function ended"
+  // And then "TIMED OUT"			  
+  function takeALongTime(time) {
+      var max = Date.now() + time;
+      while(Date.now() < max);
+      console.log("Function ended");
+  }
+  setTimeout(function() { 
+      console.log("TIMED OUT"); }, 5);
+  takeALongTime(5000);
+		</pre></code></p>
+		<p>takeALongTime is treated as one element of the event queue, which finishes first, then the setTimeout added after the function runs.</p>
+	  </section>
+	  <section id="forms">
+		<h2>Forms</h2>
+		<p>Forms can get quite complicated, but a simple text box is easy to manage.</p>
+		<p><code><pre>
+  &lt;input id="input"&gt;&lt;/input&gt;
+
+  // And in the JS
+  var form = document.getElementById("input");
+  form.value; // returns text inside form
+		</pre></code></p>
+		<input id="input"></input>
+		<p>The input can be read when a submit button is clicked, inside of the eventListener of the button.</p>
+	  </section>
+	  <section id="terminal">
+		<h2>Terminal</h2>
+		<p>As preparation for next week's workshop on how to make a server, let's try to sue the terminal, also known as command prompt on Windows.</p>
+		<p>For anyone using Windows, while using command prompt is an option, it's kind of a pain to use. Try installing <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Ubuntu on Windows</a> if you're running the latest version of windows 10. It installs a full linux terminal on your machine that can access all the same files, with the drawback that you can't launch applications from it. If you're not on the latest version of Windows, try <a href="https://www.cygwin.com/">Cygwin</a>, which does something similar but is supported by a different group of people.</p>
+		<p>Today, we're just going to focus on using cd and ls (dir on windows) to navigate the file structure.</p>
+		<img src="http://linuxcommand.org/images/Screenshot-Terminal.png">
+	  </section>
+	</div>
+   </body>
+</html>
