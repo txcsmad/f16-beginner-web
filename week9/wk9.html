@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Intro To Web 9</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+  </head>
+  <body>
+    <div id="mainpage">
+      <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+      <section id="titleSection">
+        <h1>Lesson 9: Using a Server</h1>
+        <p>Last week, we got a server up and running. The program we used, Express is a quite powerful tool. Let's look at some of the more prominent features.</p>
+      </section>
+      <section id="partials">
+        <h2>Partials</h2>
+        <p>One main feature of using a server like Node JS is the ability to use partials. For example, these webpages that are uploaded to GitHub are static pages, meaning that a server isn't assembling them whenever a request is made. Instead, the server just sees that a request was made for a file and sends a prewritten file. That means that the first part of this page (importing stylesheets, getting the MAD logo) needs to be copied into every page. Since the server is already assembling pages at runtime, though, it can add a header at the top of every file it assembles.</p>
+        <p><code><pre>
+  <% include path/to/partial/partialname %>
+        </pre></code></p>
+        <p>That will put the HTML in the partial wherever that statement is. The partial will also recieve all the variables in the main view, so it can output variable data in much the same way.</p>
+        <p><code><pre>
+  <%= varname %>
+        </pre></code></p>
+      </section>
+      <section id="code">
+        <h2>Running Code in Views</h2>
+        <p>Although most of your code should be in your router function, sometimes it is necessary to run a little code in the template. For example, iterating through an array:</p>
+        <p><code><pre>
+  &lt;% for(var i=0; i&lt;arr.length; i++){ %&gt;
+  &lt;p&gt;&lt;%= arr[i] %&gt;&lt;/p&gt;
+  &lt;p&gt;Hello!&lt;/p&gt;  
+  <% } %>
+        </pre></code></p>
+        <p>This will put each element of arr in a paragraph and put paragraphs with "Hello!" in them between each element of arr.</p>
+        <p>Variables can also be assigned in these  brackets, so a partial can be included multiple times with different data each time.</p>
+      </section>
+      <section id="requests">
+        <h2>Making Requests</h2>
+        <p>Node JS doesn't have an XMLHttpRequest object, so it makes requests differently. Node's HTTP requests are very low level and are hard to use, so we're going to use an external package.</p>
+        <p><code><pre>
+  npm install request --save
+        </pre></code></p>
+        <p>This module makes requests much easier to make. You simply pass the URL and a callback to execute when the response is returned.</p>
+        <p><code><pre>
+  var request = require("request");
+  var num = 100;
+  request("http://pokeapi.co/api/v2/pokemon/" + num,
+    function(err, response, body){
+      if(!err && response.statusCode === 200){
+        var poke = JSON.parse(body);
+        var out = {};
+        out.title = poke.name;
+        res.render("index", out);
+      }
+    });
+        </pre></code></p>
+        <p>This contacts the PokeAPI and gets a response, then parses the JSON document recieved and passes the name of the pokemon to the template.</p>
+      </section>
+    </div>
+   </body>
+</html>
