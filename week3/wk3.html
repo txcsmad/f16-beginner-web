@@ -79,7 +79,7 @@
           alert("Hello World!");
   }
 
-  button.addEventListener("click", button);
+  button.addEventListener("click", listener);
 		</pre></code></p>
 		<p>Now you can recieve input from the user using event listeners and then change the page based on what they clicked. Since each button can get its own function, they can do whatever you tell them to.</p>
 		<p></p>
@@ -87,7 +87,7 @@
 	  <section id="buttonPractice">
 		<h2>Button Practice</h2>
 		<p>Try it out! The first and second buttons are examples that are already written. The first one tells you a little bit about your computer, and the second one redirects you to the MAD site after 2 seconds. Look at the code to see how to do it and then write your own functions to attach to buttons.</p>
-		<p>You can use <code>removeEventListener(HTMLObjectName)</code> to get rid of event listeners that are already there, but in case you don't want to, there are plenty of buttons for you to assign.</p>
+		<p>You can use <code>HTMLObjectName.removeEventListener(event, listener)</code> to get rid of event listeners that are already there, but in case you don't want to, there are plenty of buttons for you to assign.</p>
 		<button id="myExample">This is an example button.</button>
 		<button id="myExample2">This button makes you leave the page.</button>
 		<br>
