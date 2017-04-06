@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+  <script>
+    var socket = io('http://localhost:3000');
+    socket.emit('message', "Hello my name is Client.");
+    socket.on('servermessage', function(message){
+      console.log(message);
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>
