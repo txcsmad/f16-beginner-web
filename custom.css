@@ -1,0 +1,30 @@
+html {
+	background-color: #eee;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.toc-elem {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: .2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.current-page {
+	color: gray;
+}
+
+.panel {
+	padding: 10px;
+	margin-top: 2%;
+}
+
+.container {
+	padding: 2%;
+	background-color: white;
+}
