@@ -3,57 +3,79 @@
   <head>
 	<meta charset="utf-8">
 	<title>Intro To Web 2</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
+
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 2: Objects</h1>
+  	<div class="container">
+  		<div class="row">
+  			<img class="u-max-full-width" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+
+  	 <div class="row">
+  		<div class="ten columns" id="titleSection">
+  		<h1>Lesson 2: Objects</h1>
 		<p>JavaScript objects are quite different from the objects of other languages, so let's get familiar with them. Then we can start using them to actually manipulate HTML on the page.</p>
 		<p>They're a bit like HashMaps, which is to say that we don't need to list variables beforehand. We just create new ones whenever we want inside of out objects but putting a . after the object name.</p>
 		<img src="https://mightybuddy.files.wordpress.com/2013/03/hash1.png?w=500">
-		<p><code><pre>
-  //Create a new object with object literal
-  var newObj={};
+		<pre>
+			<code>//Create a new object with object literal
+var newObj={};
 
-  //Create a new variable
-  //called five inside newObj
-  newObj.five=5;
+//Create a new variable
+//called five inside newObj
+newObj.five=5;
 	
-  //Gets five out (which is 5),
-  //adds 1, and puts it in newObj.six
-  newObj.six=newObj.five+1;
+//Gets five out (which is 5),
+//adds 1, and puts it in newObj.six
+newObj.six=newObj.five+1;
 
-  //Using brackets is just as good
-  newObj["six"];  //returns 6
-		</pre></code></p>
-	  </section>
+//Using brackets is just as good
+newObj["six"];  //returns 6</code>
+	    </pre>
+	  </div>
+	  <div class="panel two columns" id="toc">
+	  	<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+	  	<h5 class="toc-elem current-page"><a href="">Week 2</a></h5>
+	  	<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+	  	<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+	  	<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+	  	<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+	  	<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+	  	<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+	  	<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+	  </div>
+	 </div>
+	  
 	  <section id="windowAndDocument">
 		<h2>Special Objects</h2>
 		<p>We've actually  been using the <code>window</code> object the whole time! All variables declared with var live there, and any code not assigned to an object automatically gets assigned to it. Let's take a look:</p>
-		<p><code><pre>
-  var variableNamesAreHard=1024;
-  window.variableNamesAreHard++;
+		<pre>
+<code>var variableNamesAreHard=1024;
+window.variableNamesAreHard++;
 
-  //Returns 1025
-  window["variableNamesAreHard"];
-		</pre></code></p>
+//Returns 1025
+window["variableNamesAreHard"];</code>
+		</pre>
 		<p>Just like that new object we made earlier, except this one has a lot of stuff predefined for you.</p>
 
 		<p>Another object of significance that's defined for you is <code>document</code>. This one contains all of the HTML code of the page. We can get HTML objects in our code by using a function in the object: <code>document.getElementById</code>. We can then access and modify the text inside using the <code>innerText</code> property.</p>
 		<img class="embeddedimg" src="http://www.html-helper.net/wp-content/uploads/2013/07/HTML.jpg">
 		<p>Let's try it out! The next section has a lot of common HTML tags defined with <code>id</code>s. Pick one and try to change its contents.</p>
 		<p>For example, since Web is the most important thing that MAD does, let's move it to the top of the list that's below, in the Testing Ground section.</p>
-		<p><code><pre>
-  var topOfList=document.getElementById("firstli");
-  var third=document.getElementById("thirdli");
-  var lessImportant=topOfList.innerText;
-  topOfList.innerText=third.innerText;
-  third.innerText=lessImportant;
-		</pre></code></p>
+		<pre>
+<code>var topOfList=document.getElementById("firstli");
+var third=document.getElementById("thirdli");
+var lessImportant=topOfList.innerText;
+topOfList.innerText=third.innerText;
+third.innerText=lessImportant;</code>
+		</pre>
 	  </section> 
+
 	  <section id="testingGround">
 		<h2 id="testingGroundTitle">Testing Ground</h2>
 		<p id="MAD">MAD teaches:</p>
@@ -71,6 +93,7 @@
 		<div id="gameQuote">"Demand to see life's manager! Make life rue the day it thought it could give <strong>Cave Johnson</strong> lemons! Do you know who I am? I'm the man who's going to burn your house down! With the lemons! I'm going to get my engineers to invent a combustible lemon that burns your house down!"<i>-Cave Johnson, Portal 2</i></div>
 		<br>
 	  </section>
+
 	  <section id="conclusion">
 		<h2>Wrap Up</h2>
 		<p>We learned how to manipulate an HTML page from JavaScript code. To do that, we also learned a bit about HTML tags.</p>
@@ -78,6 +101,9 @@
 		Thanks for coming!
 	  </p>
 	  </section>
+
+	  </div>
+	  </div>
 	</div>
    </body>
 </html>
