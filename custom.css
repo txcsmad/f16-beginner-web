@@ -7,10 +7,6 @@ a {
 	color: inherit;
 }
 
-.hidden {
-	display: none;
-}
-
 .toc-elem {
   text-transform: uppercase;
   font-size: 1.4rem;
