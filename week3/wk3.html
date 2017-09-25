@@ -3,104 +3,152 @@
   <head>
 	<meta charset="utf-8">
 	<title>Intro To Web 3</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 3: Functions</h1>
-		<p>Last week we saw how to access elements of our page through JavaScript. That's not very useful on its own, though, because we need to know <i>when</i> to change the page based on some form of user input.</p>
-		<p>That's what we'll look at today: How to get input from the user and then act on that input to make the page look different as necessary.</p>
-	  </section>
-	  <section id="functions">
-      <h2>Functions</h2>
-		<p>JavaScript functions are actually just another kind of object. They have a special way to make them though. Let's take a look:</p>
-		<p><code><pre>
-  var max = function(a, b) {
+  	<div class="container">
+  		<div class="row">
+  			<img class="banner" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+	  		<section class="ten columns" id="titleSection">
+				<h1>Lesson 3: Functions</h1>
+				<p>Last week we saw how to access elements of our page through JavaScript. That's not very useful on its own, though, because we need to know <i>when</i> to change the page based on some form of user input.</p>
+				<p>We can do that using <i>functions</i>.</p>
+				<p>That's what we'll look at today: How to get input from the user and then act on that input to make the page look different as necessary.</p>
+		    </section>
+		    <div class="panel two columns" id="toc">
+			  	<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+			  	<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+			  	<h5 class="toc-elem current-page"><a href="../week3/wk3.html">Week 3</a></h5>
+			  	<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+			  	<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+			  	<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+			  	<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+			  	<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+			  	<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+	  		</div>
+		</div>
+		<section id="functions">
+      		<h2>Functions</h2>
+      		<p>Functions are a way to codify actions. When they are used or "called", they do something. This something can do anything from transforming a simple input to an output to changing the look of the page.</p>
+			<p>JavaScript functions are actually just another kind of object. They have a special way to make them though. Let's take a look:</p>
+<pre><code>var max = function(a, b) {
       if (a >= b) {
           var bigger = a;
       }	else {
           var bigger = b;
       }
       return bigger;
-  }
-		</pre></code></p>
-		<p>This function takes in two things, a and b. It checks if a is bigger than or equal to b. If it is, bigger is set to a. Otherwise it is set to b. Then bigger is <i>returned</i>. Just like a math function, you can have as many inputs as you'd like, and you can do whatever you want to them, but in the end, you return at most one thing. That's the output of the function.</p>
-		<img src="http://kylefdoherty.github.io/images/js_function_anatomy.png">
-		<p>If you're surprised the max function worked, that's because JavaScript defines <i>scope</i> differently than most languages. Any variable you create will go away at the end of the function, but stick around until then.</p>
-		<p>If you don't like storing variables in functions, this does the same thing:</p>
-		<p><code><pre>
-  function max(a, b) {
+}</code></pre>
+			<p>This function takes in two things, a and b. It checks if a is bigger than or equal to b. If it is, bigger is set to a. Otherwise it is set to b. Then bigger is <i>returned</i>. Just like a math function, you can have as many inputs as you'd like, and you can do whatever you want to them, but in the end, you return at most one thing. That's the output of the function.</p>
+			<img src="http://kylefdoherty.github.io/images/js_function_anatomy.png">
+			<p>If you're surprised the max function worked, that's because JavaScript defines <i>scope</i> differently than most languages. Any variable you create will go away at the end of the function, but stick around until then.</p>
+			<p>If you don't like storing variables in functions, this does the same thing:</p>
+<pre><code>function max(a, b) {
      //Rest of code goes here
-  }
-		</pre></code></p>
-		<p>If you want to accept a variable number of arguments, you can do that too:</p>
-		<p><code><pre>
-  var max = function() {
+  }</code></pre></p>
+			<p>If you want to accept a variable number of arguments, you can do that too:</p>
+<pre><code>var max = function() {
 	var maxSoFar = arguments[0];
 	for (x in arguments){
 	    if (arguments[x] > maxSoFar) 
 		    maxSoFar = arguments[x];
 	}
 	return maxSoFar;	
-  }
-		</pre></code></p>
-		<p>This function shows that the arguments are stored in an array-like object with numbers as keys and arguments as values. If the 
-		max function is called with the arguments 4, 8, 15, 16, 23, 42, the arguments objects will be stored as: {'0': 4, '1': 8, '2': 15, '3': 16, '4': 23, '5': 42}. This is how Javascript stores arrays.
-		</p>
-		<p>This also shows the for-each loop of JavaScript. It just takes each of the keys in arguments, one at a time, puts it in x, and then runs the code.</p>
-	  </section>
-	  <section id="callbacks">
-		<h2>Callbacks</h2>
-		<p>Functions are objects now, so what can we do with that? It turns out that a lot of code becomes more intuitive when you have <i>callbacks</i> or the ability to pass functions as function arguments.</p>
-		<p><code><pre>
-  var popup = function() {
+  }</code></pre>
+			<p>This function shows that the arguments are stored in an array-like object with numbers as keys and arguments as values. If the max function is called with the arguments 4, 8, 15, 16, 23, 42, the arguments objects will be stored as: {'0': 4, '1': 8, '2': 15, '3': 16, '4': 23, '5': 42}. This is how Javascript stores arrays.</p>
+			<p>This also shows the for-each loop of JavaScript. It just takes each of the keys in arguments, one at a time, puts it in x, and then runs the code.</p>
+	  	</section>
+
+	  	<section id="scope">
+	  		<h2>Scope</h2>
+	  		<p>In programming languages, <i>scope</i> is a way to confine variables to specific part of the code like a function or loop. When you define a variable within a certain scope, you can't access it outside of that scope. There are two advantages of this: you can't accidentally use the wrong variable, and you don't constantly have to think of new variable names -- which can lead to cleaner code.</p>
+	  		<p>Scope can also be nested.</p>
+	  		<pre><code>var name = "Pranav"; // global scope
+function someOtherFn() {
+	//var name; //if uncommented, this line would throw an error because name has been defined.
+}</code></pre>
+	  		<p>In Javascript, these structures have their own scope: functions and objects. The "global" scope depends on where the javascript is running, but usually it is referring to attributes of the window object. This object represents the browser window, is accessible from anywhere, and contains references to any local variable not in a function. <a id="scopeQuiz">As an exercise, which example below is valid?</a></p>
+            <div class="row" style="margin-top: -1.5em;">
+<pre class="six columns"><code>var outer = function() {
+    var smthng = "hello";
+    var inner = function() {
+        console.log(smthng);
+    }
+}</code></pre>
+<pre class="six columns"><code>var outer = function() {
+    var inner = function() {
+        var smthng = "hello";
+    }
+    console.log(smthng);
+}</code></pre>
+            </div>
+            <p id="scopeAnswer" style="display:none;">Answer: It's the one on the left.</p>
+            <script>
+            function hideQuizAnswer() {
+                var quiz = document.getElementById("scopeAnswer");
+                quiz.style.display = quiz.style.display == "none" ? "block" : "none";
+            }
+            document.getElementById("scopeQuiz").addEventListener('click', hideQuizAnswer);
+            </script>
+	  	</section>
+
+	  	<section id="callbacks">
+			<h2>Callbacks</h2>
+			<p>Functions are objects now, so what can we do with that? It turns out that a lot of code becomes more intuitive when you have <i>callbacks</i> or the ability to pass functions as function arguments.</p>
+			<p>In the below example, we define a popup function and then pass it into the system defined <code>setTimeout</code> function. The ability of functions to accept other functions as arguments allows your code to be flexible and adapt to a variety of scenarios that otherwise would be difficult to handle.</p>
+		<pre><code>var popup = function() {
       alert("I am an annoying popup.");			  
   }
 
   //Triggers annoying popup
   //2000 ms after code runs
-  setTimeout(popup, 2000);
-		</pre></code></p>
-		<p>That's pretty nice. I want to do something exactly 2 seconds from now, so I just say I want to run the given function in that amount of time.</p>
-		<p>However, there is a very good reason why Java doesn't support them. That reason is named <strong><i>CALLBACK HELL</i></strong>.</p>
-		<img src="http://i.imgur.com/MByWioX.png">
-		<p>The easiest way to avoid this is to not define <i>anonymous functions</i>. This programmer wrote a function straight into another one instead of separating it out. It's not a perfect fix, but doing that will make this code much better.</p>
-	  </section>
-	  <section id="eventListeners">
-		<h2>Buttons</h2>
-		<p>The most common way to use callbacks on your webpage, though, is for <i>event listeners</i>. The name is quite literal-event listeners wait for some defined event to happen, like the user clicking a button, and then do something based on that event.</p>
-		<p><code><pre>
-  var button = document.getElementById("b1");
+  setTimeout(popup, 2000);</code></pre>
+			<p>That's pretty nice. I want to do something exactly 2 seconds from now, so I just say I want to run the given function in that amount of time.</p>
+			<p>However, there is a very good reason why Java doesn't support them. That reason is named <strong><i>CALLBACK HELL</i></strong>.</p>
+			<img src="http://i.imgur.com/MByWioX.png">
+			<p>The easiest way to avoid this is to not define <i>anonymous functions</i>. This programmer wrote a function straight into another one instead of separating it out. It's not a perfect fix, but doing that will make this code much better.</p>
+	  	</section>
+
+	  	<section id="eventListeners">
+			<h2>Buttons</h2>
+			<p>The most common way to use callbacks on your webpage, though, is for <i>event listeners</i>. The name is quite literal-event listeners wait for some defined event to happen, like the user clicking a button, and then do something based on that event.</p>
+		<pre><code>var button = document.getElementById("b1");
 
   var listener = function(){
           alert("Hello World!");
   }
 
-  button.addEventListener("click", listener);
-		</pre></code></p>
-		<p>Now you can recieve input from the user using event listeners and then change the page based on what they clicked. Since each button can get its own function, they can do whatever you tell them to.</p>
-		<p></p>
-	  </section>
-	  <section id="buttonPractice">
-		<h2>Button Practice</h2>
-		<p>Try it out! The first and second buttons are examples that are already written. The first one tells you a little bit about your computer, and the second one redirects you to the MAD site after 2 seconds. Look at the code to see how to do it and then write your own functions to attach to buttons.</p>
-		<p>You can use <code>HTMLObjectName.removeEventListener(event, listener)</code> to get rid of event listeners that are already there, but in case you don't want to, there are plenty of buttons for you to assign.</p>
-		<button id="myExample">This is an example button.</button>
-		<button id="myExample2">This button makes you leave the page.</button>
-		<br>
-		<button id="b1">Click me!</button>
-		<button id="b2">Click me!</button>
-		<button id="b3">Click me!</button>
-		<button id="b4">Click me!</button>
-		<button id="b5">Click me!</button>
-		<button id="b6">Click me!</button>
-	  </section>
-	</div>
+  button.addEventListener("click", listener);</code></pre>
+			<p>Now you can recieve input from the user using event listeners and then change the page based on what they clicked. Since each button can get its own function, they can do whatever you tell them to.</p>
+			<p></p>
+	  	</section>
 
-	<script>
+	  	<section id="buttonPractice">
+			<h2>Button Practice</h2>
+			<p>Try it out! The first and second buttons are examples that are already written. The first one tells you a little bit about your computer, and the second one redirects you to the MAD site after 2 seconds. Look at the code to see how to do it and then write your own functions to attach to buttons.</p>
+			<p>You can use <code>HTMLObjectName.removeEventListener(event, listener)</code> to get rid of event listeners that are already there, but in case you don't want to, there are plenty of buttons for you to assign.</p>
+			<div>
+				<button class="button-primary" id="myExample">This is an example button.</button>
+				<button class="button-primary" id="myExample2">This button makes you leave the page.</button>
+			</div>
+			<div>
+				<button id="b1">Click me!</button>
+				<button id="b2">Click me!</button>
+				<button id="b3">Click me!</button>
+				<button id="b4">Click me!</button>
+				<button id="b5">Click me!</button>
+				<button id="b6">Click me!</button>
+			</div>
+	  </section>
+  	</div>
+   </body>
+   <script>
 	  var exampleListener=function(){
 	      var out="Your browser tells me that you use " + navigator.oscpu + " on your computer.\n";
 	      out+="The language is set to " + navigator.language + ".\n"
@@ -132,7 +180,6 @@
 
 	  document.getElementById("myExample2").addEventListener("click", redirectExample);
 	</script>
-   </body>
 </html>
 
 	  
