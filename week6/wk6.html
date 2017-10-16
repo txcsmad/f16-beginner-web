@@ -54,6 +54,36 @@
 		<h2>Try It Out</h2>
 		<p>The <a href="https://github.com/txcsmad/f16-beginner-web">starter code today</a> is the same as last time, but with localStorage, we can now keep the data recieved for future reference. Try modifying the code to keep important data you get from the server.</p>
 	  </section>
+	  <section id="ajax">
+		<h2>AJAX</h2>
+		<p>Any time you go on the Internet, you ask a <i>server</i> for some file you want. The server then responds with what is probably an HTML file, which then gets displayed on your browser. We wrote one of those pages last week.</p>
+		<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format. </p>
+		<img src="json.png">
+		<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
+		<p>The way the page can ask for data is with an HTTP request:</p>
+		<p><code><pre>
+  var gotData = function(){
+      if(this.readyState == 4 && this.status == 200){
+          window.data = JSON.parse(this.responseText);
+      } 
+  }
+  
+  var req = new XMLHttpRequest();
+  req.open("GET", "example.json");
+  req.overrideMimeType("application/json");
+  
+  req.onreadystatechange = gotData;
+  req.send();
+		</pre></code></p>
+		<p>This is usually used to communicate with the computer that your HTML files are on. While these requests can technically be made to any computer connected to the Internet, doing so from inside your browser is a security risk, so most browsers and sites prevent it from happening.<p>
+		<p>Instead, many sites have APIs you can use, and most of them make it free for the first few thousand requests per day. After that, you're probably running a successful website and the company running the service charges based on the number of requests. Some of these also prevent you from making requests from in the browser, </p>
+		<p>A good example of what is available is the <a href="https://developers.google.com/maps/">Google Maps API</a>.</p>
+	  </section>
+	  <section>
+		<h2>Try it Out</h2>
+		<p>There is a demo page for the CSS and AJAX on <a href="https://github.com/txcsmad/f16-beginner-web">GitHub</a>.</p>
+		<p></p>
+	  </section>
 	</div>
    </body>
 </html>

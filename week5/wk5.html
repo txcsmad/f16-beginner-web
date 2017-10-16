@@ -3,68 +3,86 @@
   <head>
 	<meta charset="utf-8">
 	<title>Intro To Web 5</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 5: Odds and Ends</h1>
-		<p>This week, the goal is to learn some techniques to make our pages better and more powerful.</p>
-	  </section>
-	  <section id="boxModel">
-		<h2>Box Model</h2>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Boxmodell-detail.png">
-		<p>When the browser creates a given HTML page, it represents all the elements as boxes on the screen. </p>
-		<p>Each of the styles that change how the box looks-padding, border, and margin-can be set in CSS.</p>
-		<p><code><pre>
-  p{
+  	<div class="container">
+  		<div class="row">
+  			<img class="banner" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+  			<section class="ten columns" id="titleSection">
+  				<h1>Intro Web: Advanced Front End</h1>
+  				<p>This week, the goal is to learn some techniques to make our pages better and more powerful.</p>
+  				<p>So far, all we've done is layout the basic HTML structure and add colors and effects to the existing elements. However, it's possible to do so much more with HTML and CSS. Real webpages bend HTML elements to their will by using techniques to not only modify how HTML elements look, but also how they interact with each other.</p>
+  			</section>
+  			<div class="panel two columns" id="toc">
+  				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+  				<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+  				<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+  				<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+  				<h5 class="toc-elem current-page"><a href="../week5/wk5.html">Week 5</a></h5>
+  				<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+  				<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+  				<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+  				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+  			</div>
+  		</div>
+  		<section id="boxModel">
+  			<h2>Box Model</h2>
+  			<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Boxmodell-detail.png">
+  			<p>When the browser creates a given HTML page, it represents all the elements as boxes on the screen. Each box has four parts: <strong>content</strong>, <strong>padding</strong>, <strong>border</strong>, and <strong>margin</strong>.</p>
+  			<p><strong>Content area</strong>: space allocated for "real" content, such as text or images<br>
+  			<strong>Padding area</strong>: space between borders and content, used for aesthetic purposes<br>
+  			<strong>Border area</strong>: box including the border, which could be a physical line or invisible<br>
+  			<strong>Margin area</strong>: space used to separate an element and its neighbors, used for aesthetic purposes and layout</p>
+  			<p>Each of the styles that change how the box looks-padding, border, and margin-can be set in CSS.</p>
+  			<pre><code>p {
     padding: 10px 5px;
     margin: 0px 10px 30px 6px;
     border: 1px solid black;
-  }
-		</pre></code></p>
-		<p>If four values are listed, the order is top, right, bottom, left.</p>
-		<p>If two values are listed, the first is the top and bottom and the second is left and right.</p>
-		<p>If one value is listed, they're all the same.</p>
-	  </section>
-	  <section id="flex">
-		<h2>Flexbox</h2>
-		<p>Another common styling tool is called Flexbox. It make general page layout much easier by creating a system of rows and columns for your elements to go in.</p>
-		<img src="http://blog.teamtreehouse.com/wp-content/uploads/2012/12/flexbox-justify.png">
-		<p>By default, HTML arranges items top to bottom. Flexbox allows items to be arranged horizontally very easily, and even allows items to wrap to the next line.</p>
-	  </section>
-	  <section id="ajax">
-		<h2>AJAX</h2>
-		<p>Any time you go on the Internet, you ask a <i>server</i> for some file you want. The server then responds with what is probably an HTML file, which then gets displayed on your browser. We wrote one of those pages last week.</p>
-		<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format. </p>
-		<img src="json.png">
-		<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
-		<p>The way the page can ask for data is with an HTTP request:</p>
-		<p><code><pre>
-  var gotData = function(){
-      if(this.readyState == 4 && this.status == 200){
-          window.data = JSON.parse(this.responseText);
-      } 
-  }
-  
-  var req = new XMLHttpRequest();
-  req.open("GET", "example.json");
-  req.overrideMimeType("application/json");
-  
-  req.onreadystatechange = gotData;
-  req.send();
-		</pre></code></p>
-		<p>This is usually used to communicate with the computer that your HTML files are on. While these requests can technically be made to any computer connected to the Internet, doing so from inside your browser is a security risk, so most browsers and sites prevent it from happening.<p>
-		<p>Instead, many sites have APIs you can use, and most of them make it free for the first few thousand requests per day. After that, you're probably running a successful website and the company running the service charges based on the number of requests. Some of these also prevent you from making requests from in the browser, </p>
-		<p>A good example of what is available is the <a href="https://developers.google.com/maps/">Google Maps API</a>.</p>
-	  </section>
-	  <section>
-		<h2>Try it Out</h2>
-		<p>There is a demo page for the CSS and AJAX on <a href="https://github.com/txcsmad/f16-beginner-web">GitHub</a>.</p>
-		<p></p>
-	  </section>
+}</code></pre>
+			<p>If four values are listed, the order is top, right, bottom, left.</p>
+			<p>If two values are listed, the first is the top and bottom and the second is left and right.</p>
+			<p>If one value is listed, they're all the same.</p>
+		</section>
+		<section id="display">
+			<h2>Display and Positioning</h2>
+			<p>All HTML elements have a "display" characteristic that describes how the browser chooses to position it on the page. There are two main types of displays: <strong>block-level</strong>, <strong>inline-level</strong>.</p>
+			<p><strong>Block</strong> elements take the whole width available and <strong>Inline</strong> elements act as plain text or take up at most the size of the content. You can also use the <strong>none</strong> property to hide an HTML element entirely.</p>
+			<h3>Positioning</h3>
+			<p><strong>Float</strong> is a way to shift an element left or right relative to the current line. Because HTML positions elements vertically, you need to use tools to handle horizontal positioning.</p>
+			<pre><code>img {
+	float: right;
+	margin: 10px;
+}</code></pre>
+			<p><strong>Clear</strong> is float's complement and is used to place elements around a group of floated elements. To clear a floated group, you would clear the direction that the elements above are floated and then the element would placed as if it were in the normal HTML layout flow.</p>
+			<pre><code>img2 {
+	clear: right;
+	margin: 10px;
+}</code></pre>
+		</section>
+		<section id="flex">
+			<h2>Flexbox</h2>
+			<p>Another common styling tool is called Flexbox. It make general page layout much easier by creating a system of rows and columns for your elements to go in.</p>
+			<img src="http://blog.teamtreehouse.com/wp-content/uploads/2012/12/flexbox-justify.png">
+			<p>By default, HTML arranges items top to bottom. Flexbox allows items to be arranged horizontally very easily, and even allows items to wrap to the next line.</p>
+	  	</section>
+	  	<section id="frameworks">
+	  		<h2>CSS Frameworks</h2>
+	  		<p>CSS frameworks do a lot of the work for you, and we recommend them over any of the other positioning techniques that we've talked about.</p>
+	  		<p>Two really good frameworks we recommend learning are <a href="http://getskeleton.com/">Skeleton</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+	  		<p>We'll demonstrate how to use Skeleton with an example from the starter code.</p>
+	  	</section>
+	  	<section>
+			<h2>Try it Out</h2>
+			<p><a href="https://github.com/txcsmad/f16-beginner-web">There is a demo page for the CSS on GitHub</a>.</p>
+			<p></p>
+	  	</section>  	
 	</div>
    </body>
 </html>
