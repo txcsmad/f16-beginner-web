@@ -2,52 +2,54 @@
 <html>
   <head>
 	<meta charset="utf-8">
-	<title>Intro To Web 8</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<title>Front End Javascript</title>
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 8: Making a Server</h1>
-		<p></p>
-	  </section>
-	  <section id="setup">
-		<h2>Setup</h2>
-		<p>First we need to install a few tools to get a platform where we can make a server. Install <a href="https://nodejs.org/en/">NodeJS</a> to get JavaScript locally running on your computer. This provides two new commands we can use in out terminal to make applications.</p>
-		<p>The first new command is node. Typing in node by itself gives you something like the console in your browser to test code in. You can also give a filename to node to run the JavaScript code in that file.</p>
-		<p><code><pre>
-  node // Open the console
-  // Ctrl-c twice to exit
+  	<div class="container">
+  		<div class="row">
+  			<img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+  			<section class="ten columns" id="titleSection">
+				<h1>Front End Javascript</h1>
+				<p>Coming soon!</p>
+	  		</section>
+	  		<div class="panel two columns" id="toc">
+  				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+  				<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+  				<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+  				<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+  				<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+  				<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+  				<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+  				<h5 class="toc-elem current-page"><a href="../week8/wk8.html">Week 8</a></h5>
+  				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+  			</div>
+  			<section id="forms">
+				<h2>Forms</h2>
+				<p>Forms can get quite complicated, but a simple text box is easy to manage.</p>
+				<pre><code>&lt;input id="input"&gt;&lt;/input&gt;
 
-  // Run code in code.js
-  node code.js
-		</pre></code></p>
-		<p>The second new command is npm. This is the Node Package Manager, where we can install new JavaScript packages and get added capabilities. NodeJS is very barebones, so they make packages as easy to get as possible to actually create applications. We're going to install Express, a popular web server tool, to develop our application.</p>
-		<p><code><pre>
-  npm install --global express-generator
-		</pre></code></p>
-		<p>This adds another command called express that autogenerates a lot of the files we need for a server.</p>
-		<p>Now to create a server application:</p>
-		<p><code><pre>
-  express -e myfirstserver
-		</pre></code></p>
-		<p>This will create a new application in a folder created in the current directory. That application, when run, will accept HTTP requests and send files. It will give the command to run the application when it is generated.</p>
-		<p>What we have now is technically a fully functioning server, but looking at how it works will be much more important. That way new pages and new capabilities can be added.</p>
-	  </section>
-	  <section id="processing">
-		<h2>Processing a Request</h2>
-		<p>Let's look at what a request goes through when recieved to get a feel for what components need to be modified.</p>
-		<p>First, the program checks to see if the request is asking for a file in the public folder. If that is the case, the page is sent immediately. This saves a lot of time if a static page is required.</p>
-		<p>Next, some preprocessing is done with <i>middleware</i>. This extracts cookies, what the request is asking for, any data sent in the request, and any other information needed. The request is then sent by a <i>router</i> to the appropriate function that processes it based on what page it was asking for. For example, if the server has a function for all pages of the form "/test/:id", then a request like http://mypage.com/test/12 will get processed by this function, where req.params.id will be 12. Then the function can do any processing required and create variables to be sent to the user.</p>
-		<p>Finally, all necessary variables are passed to a <i>template</i>. This template looks a lot like HTML with some extra spaces to put data from variables in before sending the data to the user. Once all the varaibles are inserted, then the result is sent to the user as HTML like a simple page would be.</p>
-	  </section>
-	  <section id="files">
-		<h2>Project Structure</h2>
-		<img src="structure.png">
-		<p>Now that we have a high level idea of how the server works, we need to go into the individual files. Some of these autogenerated files are best left alone, but specifically the public, routes, and views folders will be heavily modified to create a fully functioning site.</p>
-	  </section>
-	</div>
+// And in the JS
+var form = document.getElementById("input");
+form.value; // returns text inside form</code></pre>
+				<form>
+					<div class="row">
+						<div class="six columns">
+							<label for="input">A form input</label>
+							<input class="u-full-width" placeholder="something" type="email" id="input"></input>
+							<!-- If you don't use a type, skeleton won't style it -->
+						</div>
+					</div>
+				</form>
+				<p>The input can be read when a submit button is clicked, inside of the eventListener of the button.</p>
+	  		</section>
+  		</div>
+  	</div>
    </body>
 </html>

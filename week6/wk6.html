@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="utf-8">
-	<title>Intro To Web 5</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
-  </head>
-  <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 6: HTTP In Depth</h1>
-		<p>Almost any HTML file was designed to be used with the Internet, over a protocol known as HTTP. Knowing how it works give you additional tools to make your site.</p>
-	  </section>
-	  <section id="networking">
-		<h2>Client-Server Architecture</h2>
-		<img class="embeddedimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/500px-Client-server-model.svg.png">
-		<p>The Internet works on a <i>client server model</i>, where anyone who tries to access a webpage makes an <i>HTTP request</i> to a computer across the Internet. That computer is called a server and provides a <i>response</i> in the form of some data. This data is often an HTML page.</p>
-	  </section>
-	  <section id="stateless">
-		<h2>Preserving State</h2>
-		<p>HTTP is called a <i>stateless protocol</i> because it can't remember what has already happened. Once you get a given webpage, the server forgets who you are.</p>
-		<p>Then how can we preserve data like login information in between webpage requests?</p>
-		<img src="http://josh.webanalyticsdemystified.com/wp-content/uploads/2014/10/cookies.png">
-		<p>The most common way is to use <i>cookies</i>, small pieces of data that get sent to the server every time a request is made to it. This allows the server to keep a list of people it is currently in contact with.</p>
-		<p><code><pre>
-  document.cookie = "test=5"
-  document.cookie = "test2=hello"			 
-		</pre></code></p>
-		<p>While assigning cookies is that simple (if you want to use all the default settings), retrieving them <a href="https://www.sitepoint.com/how-to-deal-with-cookies-in-javascript/">can be a pain</a>.</p>
-		<p><code><pre>
-  function getCookie(name) {
-      // This is just magic, really
-      var regexp = new RegExp("(?:^" + name + "|;\s*"
-                    + name + ")=(.*?)(?:;|$)", "g");
-      var result = regexp.exec(document.cookie);
-      return (result === null) ? null : result[1];
-  }
-		</pre></code></p>
-		<p>As a result, cookies are usually handled server-side, where they are much easier to work with. If you need to work with them in the browser, it is probably best to Google how to access them.</p>
-		<p>Cookies aren't the only way to keep information between sessions, though. Cookies are always sent to the server so that the server can see who they are talking to, but if the information only needs to be kept locally, there are alternatives. Both localStorage and sessionStorage are kept in browser and provide a form of memory for the browser.</p>
-		<p><code><pre>
-  sessionStorage.setItem("test", 5);
-  localStorage.setItem("test2", "hello");
+  	<head>
+		<meta charset="utf-8">
+		<title>HTTP In Depth</title>
+		<link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/skeleton.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" href="../custom.css">
+  	</head>
+  	<body>
+  	<div class="container">
+  		<div class="row">
+  			<img class="banner" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+  			<section class="ten columns" id="titleSection">
+  				<h1>HTTP In Depth</h1>
+  				<p>Almost any HTML file was designed to be used with the Internet, over a protocol known as HTTP. Knowing how it works give you additional tools to make your site.</p>
+  				<p>
+  				<p>HTTP stands for HyperText Transfer Protocol. That means it is the protocol to transfer HTML between computers on a network. However, the principles of the protocol are general enough such that any data can be transferred, like files or JSON.</p>
+  			</section>
+  			<div class="panel two columns" id="toc">
+  				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+  				<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+  				<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+  				<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+  				<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+  				<h5 class="toc-elem current-page"><a href="../week6/wk6.html">Week 6</a></h5>
+  				<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+  				<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+  				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+  			</div>
+  		</div>
+  		<section id="networking">
+			<h2>Client-Server Architecture</h2>
+			<img class="embeddedimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/500px-Client-server-model.svg.png">
+			<p>The Internet works on a <i>client server model</i>, where anyone who tries to access a webpage makes an <i>HTTP request</i> to a computer across the Internet. That computer is called a server and provides a <i>response</i> in the form of some data. This data is often an HTML page.</p>
+			<p>In general, an HTTP request can ask for anything and provide any information as long as it is formatted according to protocol specifications. However, the most common request is a webpage "GET" request, which your browser sends every time you load a new webpage.</p>
+	  	</section>
+	  	<section id="stateless">
+			<h2>Preserving State</h2>
+			<p>HTTP is called a <i>stateless protocol</i> because it can't remember what has already happened. Once you get a given webpage, the server forgets who you are.</p>
+			<p>Then how can we preserve data like login information in between webpage requests?</p>
+			<img src="http://josh.webanalyticsdemystified.com/wp-content/uploads/2014/10/cookies.png">
+			<p>The most common way is to use <i>cookies</i>, small pieces of data that get sent to the server every time a request is made to it. This allows the server to keep a list of people it is currently in contact with.</p>
+			<pre><code>document.cookie = "test=5"
+document.cookie = "test2=hello"</code></pre>
+			<p>While assigning cookies is that simple (if you want to use all the default settings), retrieving them <a href="https://www.sitepoint.com/how-to-deal-with-cookies-in-javascript/">can be a pain</a>.</p>
+			<pre><code>function getCookie(name) {
+	// This is just magic, really
+	var regexp = new RegExp("(?:^" + name + "|;\s*"
+	                    + name + ")=(.*?)(?:;|$)", "g");
+	var result = regexp.exec(document.cookie);
+	return (result === null) ? null : result[1];
+}</code></pre>
+			<p>As a result, cookies are usually handled server-side, where they are much easier to work with. If you need to work with them in the browser, it is probably best to Google how to access them.</p>
+			<p>Cookies aren't the only way to keep information between sessions, though. Cookies are always sent to the server so that the server can see who they are talking to, but if the information only needs to be kept locally, there are alternatives. Both localStorage and sessionStorage are kept in browser and provide a form of memory for the browser.</p>
+			<pre><code>sessionStorage.setItem("test", 5);
+localStorage.setItem("test2", "hello");
 
-  // returns "5"
-  sessionStorage.getItem("test");
-		</pre></code></p>
-		<img src="http://5823-presscdn-0-11.pagely.netdna-cdn.com/wp-content/uploads/2013/10/localstorage.jpg">
-		<p>It is important to note that localStorage remains until the clear() function is called with it (or the user clears the data in their browser), while sessionStorage only remains until the browser is closed and reopened. Both can only store strings, so any other kind of data will be converted to a string when put into storage.</p>
-	  </section>
-	  <section id="example">
-		<h2>Try It Out</h2>
-		<p>The <a href="https://github.com/txcsmad/f16-beginner-web">starter code today</a> is the same as last time, but with localStorage, we can now keep the data recieved for future reference. Try modifying the code to keep important data you get from the server.</p>
-	  </section>
-	  <section id="ajax">
-		<h2>AJAX</h2>
-		<p>Any time you go on the Internet, you ask a <i>server</i> for some file you want. The server then responds with what is probably an HTML file, which then gets displayed on your browser. We wrote one of those pages last week.</p>
-		<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format. </p>
-		<img src="json.png">
-		<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
-		<p>The way the page can ask for data is with an HTTP request:</p>
-		<p><code><pre>
-  var gotData = function(){
-      if(this.readyState == 4 && this.status == 200){
-          window.data = JSON.parse(this.responseText);
-      } 
-  }
+// returns "5"
+sessionStorage.getItem("test");</code></pre>
+			<img src="http://5823-presscdn-0-11.pagely.netdna-cdn.com/wp-content/uploads/2013/10/localstorage.jpg">
+			<p>It is important to note that localStorage remains until the clear() function is called with it (or the user clears the data in their browser), while sessionStorage only remains until the browser is closed and reopened. Both can only store strings, so any other kind of data will be converted to a string when put into storage.</p>
+	  	</section>
+	  	<section id="example">
+			<h2>Try It Out</h2>
+			<p>The <a href="https://github.com/txcsmad/f16-beginner-web">starter code today</a> is the same as last time, but with localStorage, we can now keep the data recieved for future reference. Try modifying the code to keep important data you get from the server.</p>
+	  	</section>
+	  	<section id="ajax">
+			<h2>AJAX</h2>
+			<p>Any time you go on the Internet, you ask a <i>server</i> for some file you want. The server then responds with what is probably an HTML file, which then gets displayed on your browser. We wrote one of those pages last week.</p>
+			<p>Your computer, though, doesn't need all that extra information that you do. The computer just needs the data. To accomplish that, many sites also send their data in <i>JSON</i> format. </p>
+			<img src="json.png">
+			<p>This format is standardized, so someone already wrote something to convert to and from this format. It is a default function written in the webpage.</p>
+			<p>The way the page can ask for data is with an HTTP request:</p>
+		<pre><code>var gotData = function(){
+	if(this.readyState == 4 && this.status == 200){
+        window.data = JSON.parse(this.responseText);
+    } 
+}
   
-  var req = new XMLHttpRequest();
-  req.open("GET", "example.json");
-  req.overrideMimeType("application/json");
+var req = new XMLHttpRequest();
+req.open("GET", "example.json");
+req.overrideMimeType("application/json");
   
-  req.onreadystatechange = gotData;
-  req.send();
-		</pre></code></p>
+req.onreadystatechange = gotData;
+req.send();</code></pre>
 		<p>This is usually used to communicate with the computer that your HTML files are on. While these requests can technically be made to any computer connected to the Internet, doing so from inside your browser is a security risk, so most browsers and sites prevent it from happening.<p>
 		<p>Instead, many sites have APIs you can use, and most of them make it free for the first few thousand requests per day. After that, you're probably running a successful website and the company running the service charges based on the number of requests. Some of these also prevent you from making requests from in the browser, </p>
 		<p>A good example of what is available is the <a href="https://developers.google.com/maps/">Google Maps API</a>.</p>
@@ -84,6 +97,6 @@
 		<p>There is a demo page for the CSS and AJAX on <a href="https://github.com/txcsmad/f16-beginner-web">GitHub</a>.</p>
 		<p></p>
 	  </section>
-	</div>
-   </body>
+  	</div>
+   	</body>
 </html>
