@@ -12,12 +12,13 @@
   <body>
   	<div class="container">
   		<div class="row">
-  			<img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  			<img class="banner" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
   		</div>
   		<div class="row">
   			<section class="ten columns" id="titleSection">
 				<h1>Front End Javascript</h1>
-				<p>Coming soon!</p>
+				<p>Front End Javascript frameworks are used to render websites dynamically and decouple the front end and backend.</p>
+				<p>Some popular frameworks include React, Angular, and Vue. Today, we'll be talking about Vue.js because it's easy to set up and simplifies some of the concepts.</p>
 	  		</section>
 	  		<div class="panel two columns" id="toc">
   				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
@@ -30,8 +31,52 @@
   				<h5 class="toc-elem current-page"><a href="../week8/wk8.html">Week 8</a></h5>
   				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
   			</div>
+  			<section id="rest">
+  				<h2>The REST API</h2>
+  				<img src="rest-api.png" width="70%" height="70%">
+  				<p>REST, or representational state transfer, is the formal name given to the structure of the HTTP protocol and a generalization of such protocols. The idea behind REST is to create a standard of stateless operations that allow browsers and servers to interact.</p>
+  				<p>If a web service (basically the backend of a website) implements REST, it is called REST-compliant. All that means is that it allows apps to manipulate its resources with text and some standard stateless operations. These operations are usually the <a href="https://tools.ietf.org/html/rfc2068">HTTP operations</a> (GET, PUT, POST, etc.). And <strong>stateless</strong> means that each operation is self-contained and doesn't require any information not given in the request.</p>
+  			</section>
+  			<section id="frameworks">
+  				<h2>Frameworks</h2>
+  				<p>So how does this relate to what we're doing? We can build a back end with NodeJS, ExpressJS, and a database software like MongoDB or MySQL. To some extent, Express also allows to modify the front end with EJS. However, this ties the website's look heavily to the backend and increases the work the backend has to do.</p>
+  				<p>We can reduce the server workload by doing all the rendering through a Javascript front end framework. Frameworks like Angular, React, and Vue have a syntax that can be placed directly within the HTML and dynamically update based on user-defined functions.</p>
+  			</section>
+  			<section id="Vue">
+  				<h2>Vue</h2>
+  				<div class="row">
+  					<div class="one-half column">
+  						VueJS is a front end framework that is easy to read and use. Although the core library is for view rendering, it can also support single page applications (replacing the backend with just a front end framework). We'll do a tutorial with Vue so everyone can get some hands on experience. <a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/">Use this link to access the JSFiddle.</a>
+  					</div>
+  					<div class="one-half column"><img src="vuejs-logo.jpg" width="80%" height="80%"></div>
+  				</div>
+  				<h3>Declarative Rendering</h3>
+  				<p>Vue works by handling everything from an instance of the "Vue" object, which you set up in javascript attached to the HTML file. You also need to include Vue in your HTML via a script tag.</p>
+  				<pre><code>&lt;div id="app"&gt;
+  {{ message }}
+&lt;/div&gt;</code></pre>
+				<pre><code>var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})</code></pre>
+				<p>This concept is at the heart of Vue. Basically, you declare that a variable is equal to something and then you insert that variable into the HTML directly. You can also insert it by <strong>binding</strong> a property to the value of that variable.</p>
+				<pre><code>&lt;span v-bind:title="message"&gt;Some text.&lt;/div&gt;</code></pre>
+				<p>You do this by using the <strong>v-bind</strong> "directive". This means that you add the v-bind keyword and a colon in front of any HTML element property you want to tie the value of to a Vue variable.</p>
+				<h3>Conditions and Loops</h3>
+				<h4>v-if</h4>
+				<p>This directive allows you to control whether elements are displayed using booleans. You set "v-if" equal to the boolean variable you want it to rely on.</p>
+				<h4>v-for</h4>
+				<p>This directive allows you to include loop syntax in displaying the same HTML element multiple times with small changes. See the example in the starter code.</p>
+				<h3>User Input</h3>
+				<p>User input in Vue still uses the concept of Javascript event listeners, but simplifies the syntax.</p>
+				<pre><code>&lt;button v-on:click="reverseMessage"&gt;</code></pre>
+				<p>Use the directive "v-on" and specify an event ("click") and finally set it equal to the name of the function that handles the event.</p>
+				<p>You can also do something called <strong>two-way binding</strong>, where you take user input and use it to change a property on the page. You would do this by tying a form field to an element on the page using the "v-model" directive.</p>
+  			</section>
   			<section id="forms">
-				<h2>Forms</h2>
+				<h2>Aside: Forms</h2>
 				<p>Forms can get quite complicated, but a simple text box is easy to manage.</p>
 				<pre><code>&lt;input id="input"&gt;&lt;/input&gt;
 
@@ -48,6 +93,9 @@ form.value; // returns text inside form</code></pre>
 					</div>
 				</form>
 				<p>The input can be read when a submit button is clicked, inside of the eventListener of the button.</p>
+	  		</section>
+	  		<section id="overview">
+	  			<p><a href="https://github.com/txcsmad/f16-beginner-web/tree/master/week8">Try all of this out using the test code provided in starterCode!</a></p>
 	  		</section>
   		</div>
   	</div>
