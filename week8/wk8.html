@@ -2,52 +2,102 @@
 <html>
   <head>
 	<meta charset="utf-8">
-	<title>Intro To Web 8</title>
-	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<title>Front End Javascript</title>
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-	  <section id="titleSection">
-		<h1>Lesson 8: Making a Server</h1>
-		<p></p>
-	  </section>
-	  <section id="setup">
-		<h2>Setup</h2>
-		<p>First we need to install a few tools to get a platform where we can make a server. Install <a href="https://nodejs.org/en/">NodeJS</a> to get JavaScript locally running on your computer. This provides two new commands we can use in out terminal to make applications.</p>
-		<p>The first new command is node. Typing in node by itself gives you something like the console in your browser to test code in. You can also give a filename to node to run the JavaScript code in that file.</p>
-		<p><code><pre>
-  node // Open the console
-  // Ctrl-c twice to exit
+  	<div class="container">
+  		<div class="row">
+  			<img class="banner" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+  			<section class="ten columns" id="titleSection">
+				<h1>Front End Javascript</h1>
+				<p>Front End Javascript frameworks are used to render websites dynamically and decouple the front end and backend.</p>
+				<p>Some popular frameworks include React, Angular, and Vue. Today, we'll be talking about Vue.js because it's easy to set up and simplifies some of the concepts.</p>
+	  		</section>
+	  		<div class="panel two columns" id="toc">
+  				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+  				<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+  				<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+  				<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+  				<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+  				<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+  				<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+  				<h5 class="toc-elem current-page"><a href="../week8/wk8.html">Week 8</a></h5>
+  				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+  			</div>
+  			<section id="rest">
+  				<h2>The REST API</h2>
+  				<img src="rest-api.png" width="70%" height="70%">
+  				<p>REST, or representational state transfer, is the formal name given to the structure of the HTTP protocol and a generalization of such protocols. The idea behind REST is to create a standard of stateless operations that allow browsers and servers to interact.</p>
+  				<p>If a web service (basically the backend of a website) implements REST, it is called REST-compliant. All that means is that it allows apps to manipulate its resources with text and some standard stateless operations. These operations are usually the <a href="https://tools.ietf.org/html/rfc2068">HTTP operations</a> (GET, PUT, POST, etc.). And <strong>stateless</strong> means that each operation is self-contained and doesn't require any information not given in the request.</p>
+  			</section>
+  			<section id="frameworks">
+  				<h2>Frameworks</h2>
+  				<p>So how does this relate to what we're doing? We can build a back end with NodeJS, ExpressJS, and a database software like MongoDB or MySQL. To some extent, Express also allows to modify the front end with EJS. However, this ties the website's look heavily to the backend and increases the work the backend has to do.</p>
+  				<p>We can reduce the server workload by doing all the rendering through a Javascript front end framework. Frameworks like Angular, React, and Vue have a syntax that can be placed directly within the HTML and dynamically update based on user-defined functions.</p>
+  			</section>
+  			<section id="Vue">
+  				<h2>Vue</h2>
+  				<div class="row">
+  					<div class="one-half column">
+  						VueJS is a front end framework that is easy to read and use. Although the core library is for view rendering, it can also support single page applications (replacing the backend with just a front end framework). We'll do a tutorial with Vue so everyone can get some hands on experience. <a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/">Use this link to access the JSFiddle.</a>
+  					</div>
+  					<div class="one-half column"><img src="vuejs-logo.jpg" width="80%" height="80%"></div>
+  				</div>
+  				<h3>Declarative Rendering</h3>
+  				<p>Vue works by handling everything from an instance of the "Vue" object, which you set up in javascript attached to the HTML file. You also need to include Vue in your HTML via a script tag.</p>
+  				<pre><code>&lt;div id="app"&gt;
+  {{ message }}
+&lt;/div&gt;</code></pre>
+				<pre><code>var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})</code></pre>
+				<p>This concept is at the heart of Vue. Basically, you declare that a variable is equal to something and then you insert that variable into the HTML directly. You can also insert it by <strong>binding</strong> a property to the value of that variable.</p>
+				<pre><code>&lt;span v-bind:title="message"&gt;Some text.&lt;/div&gt;</code></pre>
+				<p>You do this by using the <strong>v-bind</strong> "directive". This means that you add the v-bind keyword and a colon in front of any HTML element property you want to tie the value of to a Vue variable.</p>
+				<h3>Conditions and Loops</h3>
+				<h4>v-if</h4>
+				<p>This directive allows you to control whether elements are displayed using booleans. You set "v-if" equal to the boolean variable you want it to rely on.</p>
+				<h4>v-for</h4>
+				<p>This directive allows you to include loop syntax in displaying the same HTML element multiple times with small changes. See the example in the starter code.</p>
+				<h3>User Input</h3>
+				<p>User input in Vue still uses the concept of Javascript event listeners, but simplifies the syntax.</p>
+				<pre><code>&lt;button v-on:click="reverseMessage"&gt;</code></pre>
+				<p>Use the directive "v-on" and specify an event ("click") and finally set it equal to the name of the function that handles the event.</p>
+				<p>You can also do something called <strong>two-way binding</strong>, where you take user input and use it to change a property on the page. You would do this by tying a form field to an element on the page using the "v-model" directive.</p>
+  			</section>
+  			<section id="forms">
+				<h2>Aside: Forms</h2>
+				<p>Forms can get quite complicated, but a simple text box is easy to manage.</p>
+				<pre><code>&lt;input id="input"&gt;&lt;/input&gt;
 
-  // Run code in code.js
-  node code.js
-		</pre></code></p>
-		<p>The second new command is npm. This is the Node Package Manager, where we can install new JavaScript packages and get added capabilities. NodeJS is very barebones, so they make packages as easy to get as possible to actually create applications. We're going to install Express, a popular web server tool, to develop our application.</p>
-		<p><code><pre>
-  npm install --global express-generator
-		</pre></code></p>
-		<p>This adds another command called express that autogenerates a lot of the files we need for a server.</p>
-		<p>Now to create a server application:</p>
-		<p><code><pre>
-  express -e myfirstserver
-		</pre></code></p>
-		<p>This will create a new application in a folder created in the current directory. That application, when run, will accept HTTP requests and send files. It will give the command to run the application when it is generated.</p>
-		<p>What we have now is technically a fully functioning server, but looking at how it works will be much more important. That way new pages and new capabilities can be added.</p>
-	  </section>
-	  <section id="processing">
-		<h2>Processing a Request</h2>
-		<p>Let's look at what a request goes through when recieved to get a feel for what components need to be modified.</p>
-		<p>First, the program checks to see if the request is asking for a file in the public folder. If that is the case, the page is sent immediately. This saves a lot of time if a static page is required.</p>
-		<p>Next, some preprocessing is done with <i>middleware</i>. This extracts cookies, what the request is asking for, any data sent in the request, and any other information needed. The request is then sent by a <i>router</i> to the appropriate function that processes it based on what page it was asking for. For example, if the server has a function for all pages of the form "/test/:id", then a request like http://mypage.com/test/12 will get processed by this function, where req.params.id will be 12. Then the function can do any processing required and create variables to be sent to the user.</p>
-		<p>Finally, all necessary variables are passed to a <i>template</i>. This template looks a lot like HTML with some extra spaces to put data from variables in before sending the data to the user. Once all the varaibles are inserted, then the result is sent to the user as HTML like a simple page would be.</p>
-	  </section>
-	  <section id="files">
-		<h2>Project Structure</h2>
-		<img src="structure.png">
-		<p>Now that we have a high level idea of how the server works, we need to go into the individual files. Some of these autogenerated files are best left alone, but specifically the public, routes, and views folders will be heavily modified to create a fully functioning site.</p>
-	  </section>
-	</div>
+// And in the JS
+var form = document.getElementById("input");
+form.value; // returns text inside form</code></pre>
+				<form>
+					<div class="row">
+						<div class="six columns">
+							<label for="input">A form input</label>
+							<input class="u-full-width" placeholder="something" type="email" id="input"></input>
+							<!-- If you don't use a type, skeleton won't style it -->
+						</div>
+					</div>
+				</form>
+				<p>The input can be read when a submit button is clicked, inside of the eventListener of the button.</p>
+	  		</section>
+	  		<section id="overview">
+	  			<p><a href="https://github.com/txcsmad/f16-beginner-web/tree/master/week8">Try all of this out using the test code provided in starterCode!</a></p>
+	  		</section>
+  		</div>
+  	</div>
    </body>
 </html>

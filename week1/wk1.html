@@ -3,113 +3,109 @@
   <head>
 	<meta charset="utf-8">
 	<title>Intro To Web</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
   </head>
   <body>
-  	<div id="mainpage">
-	  <img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
-      <section id="Welcome">
-        <h1>Welcome to Beginner Web!</h1>
-        <p>This course will focus on teaching <strong>JavaScript</strong>, the programming language of the Web. After learning HTML, CSS, and JavaScript, you'll be able to make your own websites.</p>
-        <p>In this class, you will (hopefully) learn:</p>
-        <ul>
-          <li>How to write standard JavaScript.</li>
-          <li>More importantly, you'll learn the way JavaScript works and what it can do for you. The syntax itself isn't that important-that's the stuff you can Google after all.</li>
-          <li>Along the way you'll pick up some HTML and CSS, the other components of a website.</li>
-        </ul>
-      </section>
-
-
-      <section id="HowWebpagesWork">
-        <h2>How Webpages Work</h2>
-		<img class="embeddedimg" src="http://bulbulcse.com/wp-content/uploads/2016/06/c.png" width=440 height=280>
-   	    <p>When you visit some website, your browser gets a lot of text, which it puts together to make the page that you see. There are three main kinds of text that get sent to your browser:<br><br></p>
-        <ul>
-	      <li>HyperText Markup Language (HTML), which is mostly a list of things that you're seeing.</li>
-		<p><code><pre>
-	&lt;p&gt;When you visit some site...&lt;p&gt;
-		</pre></code></p>
-	      <li>Cascading StyleSheets (CSS), which defines how something looks. CSS adds styling to your page. </li>
-		<p><code><pre>
-	html{
-        background-color: #eee;
-        font-family: 'Roboto', sans-serif;
-        font-size: 20pt;
-	}
-		</pre></code></p>
-	      <li>JavaScript, the full programming language that runs on your browser. Its main purpose is to add interactivity.</li>
-		<p><code><pre>
-	var i=7+4-3*2;
-	var hello="Hello World!";
-	console.log(hello);
-	console.log("7+4-3*2 is " + i);
-		</pre></code></p>
-	    </ul>
-	  </section>
-
-
-      <section id="KeepInMind">
-	    <h2>Keep In Mind</h2>
-	    <ul>
-	      <li>JavaScript is the programming language you'll use to make your website interactive. Don't overuse it though, because it's the slowest thing on the page.</li>
-	      <li>JavaScript is not Java. They make very different decisions about how they act as languages, even if they share a lot of superficial similarities.</li>
-	      <li>When in class, <strong>don't focus on memorizing syntax.</strong> You will be writing code for the Internet here, so use the Internet to your advantage as much as possible.</li>
-	    </ul>
-        <p> I personally recommend <a href="https://developer.mozilla.org/en-US/"> MDN, the Mozilla Developer Network,</a> and <a href="https://stackoverflow.com">Stack Overflow</a>.</p>
-		<p>That being said, the best way to learn is to jump in and write some code. Press the <code>F12</code> key to open your browser's developer tools. For now, any browser is fine, but if you're going to do a lot of web development, you should be using either Chrome or Firefox. You can enter JavaScript code in the console tab.</p>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Mozilla_Firefox_logo_2013.svg" class="embeddedimg" width=150 height=150>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Google_Chrome_for_Android_Icon_2016.svg" width=150 height=150>
-	  </section>
-	
-
-	  <section id="FirstSteps">
-	    <h2>First Lines of Code</h2>
-        <p>In most programming languages, <i>variables</i> are at the core of your code. They are places to put information that you will use later in your program, whether that information is a number, some text, a list of values, or a new kind of data you make up on your own.</p>
-		<p>Creating JavaScript variables is pretty straightforward. Use <code>var</code> before creating a new variable, and once a new one is created, anything can be put in it, namely numbers and strings. To put something in the variable, use <code>=</code>. Some examples:</p>
-		<p><code><pre>
-	var a=5;
-	var b=8;
-	var c="Hello World!";
-	a="Hi World!";
-	c=3.14;
-		</pre></code></p>
-		<p>We can also use basic math operations. Namely, +. -. *, and / work pretty much as expected with numbers and are called <i>binary operators</i>. </p>
-		<p><code><pre>
-	5+8.3           //returns 13.3
-	var frac=3/5    //puts 0.6 in frac
-	4*(7-6+5)       //returns 24
-	3.7+2.5*5       //returns 14.7
-	div="a" + "bc"  //Reassigns frac to "abc"
-		</pre></code></p>
-		<p>They work a little like functions: they take two inputs and give you back the result in its place. These pieces of code that the computer simplifies for you are called <i>expressions</i>. They're the basic building blocks of your code.</p>
-	  </section>
-	  <section id="Conditions">
-		<h2>Conditions</h2>
-		<p>In any programming language, it's important to make decisions based on some external factor, often the user. To do this, we use <i>booleans</i>, which are either true or false. They're almost always used to test if something is true, and then execute some code based on that. We can compare two numbers with binary operators like &gt;, &lt;, &gt;=, and &lt;=. You can also use the boolean operators !, &&, and || to combine and change your conditions.</p>
-		<p><code><pre>
-	4>=6            //returns false
-	2<3 || 5<=3     //returns true
-	!(4.5>5 && 4>3) //returns false
-		</pre></code></p>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Vennandornot.svg" class="embeddedimg">
-		<p>However, equality is a bit more complicated, since = was already taken for the assignment operator. JavaScript uses == and ===. == tries to convert both values to the same type before comparing, while === doesn't.</p>
-		<p><code><pre>
-	3=="3"         //returns true
-	3==="3"        //returns false
-	3===3          //returns true
-		</pre></code></p>
-		<p>JavaScript is weakly typed, so that means that you can try to convert anything to anything else, including a boolean. If you do, only 0, NaN, and "" will return false, or be "falsey". There are a few more falsey values, but those are the only strings and numbers that are falsey.</p>
-	  </section>
-	  <section id="Finish">
-		<h2>Wrap Up</h2>
-		<p>We learned about three kinds of data that JavaScript can work with in variables: numbers, strings, and booleans. We also learned how to use these data types in expressions to have our program do basic manipulation of that data. Those expressions often have operators in them that tell our program what we want to do with our data.</p>
-		<p>The type of data we're working with isn't clearly defined when we write our code, so we have to keep in mind that we can mix types. That's sometimes what you want, but remember to keep it in mind. In more complicated programs, it results in some problems.</p>
-	  </section>
-	  <p>
-		Thanks for coming! Let me know what you thought about this class by filling out <a href="http://bit.ly/2bUuccx">this anonymous survey.</a> 
-	  </p>
-	</div>
+  	<div class="container">
+  		<div class="row">
+  			<img src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+  		<div class="row">
+  			<section class="ten columns" id="Welcome">
+  				<h1>Welcome to Beginner Web!</h1>
+  				<p>This course will focus on teaching <strong>JavaScript</strong>, the programming language of the Web. After learning HTML, CSS, and JavaScript, you'll be able to make your own websites.</p>
+  				<p>In this class, you will (hopefully) learn:</p>
+  				<ul>
+  					<li>How to write standard JavaScript.</li>
+  					<li>How JavaScript works and what it can do for you. The syntax itself isn't that important-that's the stuff you can Google after all.</li>
+  					<li>Some HTML and CSS, the other components of a website.</li>
+  				</ul>
+  			</section>
+  			<div class="panel two columns" id="toc">
+			  	<h5 class="toc-elem current-page"><a href="../week1/wk1.html">Week 1</a></h5>
+			  	<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+			  	<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+			  	<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+			  	<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+			  	<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+			  	<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+			  	<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+			  	<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+	  		</div>
+  		</div>
+  		<section id="HowWebpagesWork">
+  			<h2>How Webpages Work</h2>
+  			<img class="embeddedimg" src="http://bulbulcse.com/wp-content/uploads/2016/06/c.png" width=440 height=280>
+  			<p>When you visit some website, your browser gets a lot of text, which it puts together to make the page that you see. There are three main kinds of text that get sent to your browser:<br><br></p>
+  			<ul>
+  				<li>HyperText Markup Language (HTML), which is mostly a list of things that you're seeing.</li>
+				<pre><code>&lt;p&gt;When you visit some site...&lt;p&gt;</code></pre>
+				<li>Cascading StyleSheets (CSS), which defines how something looks. CSS adds styling to your page. </li>
+				<pre><code>html {
+	background-color: #eee;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20pt;
+}</code></pre>
+				<li>JavaScript, the full programming language that runs on your browser. Its main purpose is to add interactivity.</li>
+		<pre><code>var i=7+4-3*2;
+var hello="Hello World!";
+console.log(hello);
+console.log("7+4-3*2 is " + i);</code></pre>
+	    	</ul>
+	  	</section>
+	  	<section id="KeepInMind">
+	  		<h2>Keep In Mind</h2>
+	  		<ul>
+	  			<li>JavaScript is the programming language you'll use to make your website interactive. Don't overuse it though, because it's the slowest thing on the page.</li>
+	  			<li>JavaScript is not Java. They make very different decisions about how they act as languages, even if they share a lot of superficial similarities.</li>
+	  			<li>When in class, <strong>don't focus on memorizing syntax.</strong> You will be writing code for the Internet here, so use the Internet to your advantage as much as possible.</li>
+	  		</ul>
+	  		<p> I personally recommend <a href="https://developer.mozilla.org/en-US/"> MDN, the Mozilla Developer Network,</a> and <a href="https://stackoverflow.com">Stack Overflow</a>.</p>
+	  		<p>That being said, the best way to learn is to jump in and write some code. Press the <code>F12</code> key (or if that doesn't work on Mac, press <code>Cmd+Option+J</code>) to open your browser's developer tools. You can also right click the page and click Inspect. For now, any browser is fine, but if you're going to do a lot of web development, you should be using either Chrome or Firefox. You can enter JavaScript code in the console tab.</p>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Mozilla_Firefox_logo_2013.svg" class="embeddedimg" width=150 height=150>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Google_Chrome_for_Android_Icon_2016.svg" width=150 height=150>
+	  	</section>
+	  	<section id="FirstSteps">
+	  		<h2>First Lines of Code</h2>
+	  		<p>In most programming languages, <i>variables</i> are at the core of your code. They are places to put information that you will use later in your program, whether that information is a number, some text, a list of values, or a new kind of data you make up on your own.</p>
+	  		<p>Creating JavaScript variables is pretty straightforward. Use <code>var</code> before creating a new variable, and once a new one is created, anything can be put in it, namely numbers and strings. To put something in the variable, use <code>=</code>. Some examples:</p>
+		<pre><code>var a=5;
+var b=8;
+var c="Hello World!";
+a="Hi World!";
+c=3.14;</code></pre>
+			<p>We can also use basic math operations. Namely, +. -. *, and / work pretty much as expected with numbers and are called <i>binary operators</i>. </p>
+		<pre><code>5+8.3    //returns 13.3
+var frac=3/5    //puts 0.6 in frac
+4*(7-6+5)       //returns 24
+3.7+2.5*5       //returns 14.7
+div="a" + "bc"  //Reassigns frac to "abc"</code></pre>
+			<p>They work a little like functions: they take two inputs and give you back the result in its place. These pieces of code that the computer simplifies for you are called <i>expressions</i>. They're the basic building blocks of your code.</p>
+	  	</section>
+	  	<section id="Conditions">
+			<h2>Conditions</h2>
+			<p>In any programming language, it's important to make decisions based on some external factor, often the user. To do this, we use <i>booleans</i>, which are either true or false. They're almost always used to test if something is true, and then execute some code based on that. We can compare two numbers with binary operators like &gt;, &lt;, &gt;=, and &lt;=. You can also use the boolean operators !, &&, and || to combine and change your conditions.</p>
+		<pre><code>4>=6  //returns false
+2<3 || 5<=3     //returns true
+!(4.5>5 && 4>3) //returns false</code></pre>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Vennandornot.svg" class="embeddedimg">
+			<p>However, equality is a bit more complicated, since = was already taken for the assignment operator. JavaScript uses == and ===. == tries to convert both values to the same type before comparing, while === doesn't.</p>
+			<pre><code>3=="3"         //returns true
+3==="3"        //returns false
+3===3          //returns true</code></pre>
+			<p>JavaScript is weakly typed, so that means that you can try to convert anything to anything else, including a boolean. If you do, only 0, NaN, and "" will return false, or be "falsey". There are a few more falsey values, but those are the only strings and numbers that are falsey.</p>
+	  	</section>
+	  	<section id="Finish">
+			<h2>Wrap Up</h2>
+			<p>We learned about three kinds of data that JavaScript can work with in variables: numbers, strings, and booleans. We also learned how to use these data types in expressions to have our program do basic manipulation of that data. Those expressions often have operators in them that tell our program what we want to do with our data.</p>
+			<p>The type of data we're working with isn't clearly defined when we write our code, so we have to keep in mind that we can mix types. That's sometimes what you want, but remember to keep it in mind. In more complicated programs, it results in some problems.</p>
+	  	</section>
+	  	<p>Thanks for coming! Let me know what you thought about this class by filling out <a href="http://bit.ly/2bUuccx">this anonymous survey.</a></p>
+  	</div>
    </body>
 </html>
 
