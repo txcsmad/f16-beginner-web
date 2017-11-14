@@ -9,7 +9,6 @@ var app = new Vue({
         app.posts = JSON.parse(this.responseText);
       } 
     }
-
     var req = new XMLHttpRequest();
     req.open("GET", "/posts");
     req.onreadystatechange = gotData;

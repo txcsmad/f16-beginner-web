@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="css" href="/css/normalize.css">
+    <link rel="stylesheet" type="css" href="/css/skeleton.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="css" href="/css/style.css">
+    <script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <% if (name != undefined) { %>
+      <h6 class="item"><strong>Welcome, <%= name %></strong></h6>
+      <% } else { %>
+      <h6 class="item"><strong>Welcome</strong></h6>
+      <% } %>
+    </div>
+    <div class="container" id="app">
+      <div class="row" v-for="post in posts">
+        <div class="card">
+          <p class="post-title">{{post.title}}</p>
+          <p class="poster-name"><strong>{{post.author}}</strong></p>
+          <p class="post-body">{{post.body}}</p>
+        </div>
+        <div class="comment-card">
+          <div class="comment" v-for="comment in post.comments">
+            <p class="cmt-author"><strong>{{comment.author}}</strong></p>
+            <p class="cmt-body">{{comment.body}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/view.js"></script>
+</html>

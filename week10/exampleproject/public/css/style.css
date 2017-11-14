@@ -1,0 +1,65 @@
+/* Navigation bar */
+.navbar {
+	background-color: #34495e;
+	display: flex;
+	align-items: center;
+}
+
+.item {
+	width: auto;
+	height: auto;
+	position: static;
+	padding: 1%;
+	margin: 0;
+	color: white; /* text color */
+}
+
+/* Content styles */
+body {
+	background-color: #DADFE1;
+}
+
+.card {
+	border-width: 1px;
+	border-color: #bdc3c7;
+	background-color: white;
+	border-radius: 3px 3px 0px 0px;
+	padding: 1%;
+	margin: 10px;
+	margin-bottom: 0px;
+}
+
+.comment-card {
+	background-color: #ECF0F1;
+	border-radius: 0px 0px 3px 3px;
+	padding: 1%;
+	margin: 10px;
+	margin-top: 0px;
+}
+
+.cmt-author {
+	display: inline;
+}
+
+.cmt-body {
+	display: inline;
+}
+
+.post-title {
+	font-size: 1.4em;
+	color: #2980b9;
+	margin: 0;
+	padding: 0;
+}
+
+.poster-name {
+	font-size: 0.8em;
+	color: #7f8c8d;
+	margin: 0;
+	padding: 0;
+}
+
+.post-body {
+	margin: 0;
+	padding: 0;
+}
