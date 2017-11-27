@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://unpkg.com/vue@2.5.3/dist/vue.js"></script>
+	</head>
+	<body>
+		<div class="container" id="app">
+			<div class="row" v-for="post in posts">
+				<div class="card">
+					<p>{{post.title}}</p>
+					<p><strong>{{post.author}}</strong></p>
+					<p>{{post.body}}</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/js/view.js"></script>
+</html>
