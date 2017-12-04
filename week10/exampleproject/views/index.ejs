@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="css" href="/css/normalize.css">
-    <link rel="stylesheet" type="css" href="/css/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/skeleton.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
   </head>
   <body>
@@ -17,6 +17,15 @@
       <% } %>
     </div>
     <div class="container" id="app">
+      <form>
+      <div class="row">
+        <div class="card card-full">
+            <label for="newpost">New Post</label>
+            <textarea placeholder="What's on your mind?" class="u-full-width" rows="3" id="newpost"></textarea>
+            <input class="button-primary" type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
       <div class="row" v-for="post in posts">
         <div class="card">
           <p class="post-title">{{post.title}}</p>

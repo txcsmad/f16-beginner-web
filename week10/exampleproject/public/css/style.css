@@ -19,6 +19,10 @@ body {
 	background-color: #DADFE1;
 }
 
+input, textarea {
+	margin: 0px;
+}
+
 .card {
 	border-width: 1px;
 	border-color: #bdc3c7;
@@ -27,6 +31,11 @@ body {
 	padding: 1%;
 	margin: 10px;
 	margin-bottom: 0px;
+}
+/* extend card class */
+.card-full {
+	border-radius: 3px;
+	margin: 10px;
 }
 
 .comment-card {
