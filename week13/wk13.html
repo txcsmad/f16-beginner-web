@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>Basic Object Oriented Programming</title>
+	<link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../custom.css">
+
+  </head>
+  <body>
+  	<div class="container">
+  		<div class="row">
+  			<img class="u-max-full-width" src="https://txcsmad.com/static/images/mad-logo-15-16.svg">
+  		</div>
+
+  	 <div class="row">
+  		<div class="ten columns" id="titleSection">
+  		<h1>Last Workshop</h1>
+      <p>There are a few concepts that are nice to know. Specifically, we're going to learn about uploading a site to a server, Promises, minifiers, and databases.</p>
+      <section id="now">
+        <h2>Now JS</h2>
+        <p>To upload an Express project to a server with a URL, we're going to use Now because it's easy to use. To install it, run</p>
+        <p><code>npm install -g now</code></p>
+        <p>Then run the <code>now</code> command in the root of your project, follow the prompts, and the command will return a URL.</p>
+        <p>Most hosting services are quite a bit more complicated than this, but this is plenty good to work with.</p>
+      </section>
+	  </div>
+	  <div class="panel two columns" id="toc">
+	  	<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
+	  	<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
+	  	<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
+	  	<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
+	  	<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
+	  	<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
+	  	<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
+	  	<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
+	  	<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+	  </div>
+	 </div>
+   <section id="promises">
+     <h2>Promises</h2>
+     <p>We have beeen using callbacks to handle asynchronous code, but promises are another way to work with code that takes a long time to execute.</p>
+     <pre><code>var p = new Promise((accept, reject) =&gt; {
+// do something that takes a long time
+if (success) {
+  accept(result);
+} else {
+  reject(err);
+}
+});
+p.then((result) =&gt; console.log(result));
+     </code></pre>
+     <p>The code with callbacks would call a function at the end of the code, just like this does, but promises can easily be chained and passed around. They also support async/await syntax on Node:</p>
+     <pre><code>// foo is a function that returns a promise
+async function bar() {
+  const result = await foo();
+  console.log(result);
+  return result;
+}</code></pre>
+     <p>Code after the await is put into a call to "then" for the promise. The await keyword can only be used in async functions, which can only return promises (not regular values) because by the time the function finishes, the function will have awaited a promise. The return value is automatically put into a promis. The result variable is not a promise, for example, but is put into one when bar returns.</p>
+   </section>
+   <section id="minifiers">
+     <h2>Minifiers</h2>
+     <p>Most websites do not have clean, readable JavaScript and CSS when opened in the debugger. This is (hopefully) because they run minifiers before sending the code over the internet. Minifiers make files smaller while making sure the file does the same thing. The most obvious thing that a minifier can do is remove comments and whitespace. Minifiers can also change longer variable names to shorter variable names, but not all minifiers do that.</p>
+     <p><a href="https://javascript-minifier.com">Here is an example of a JavaScript Minifier.</a></p>
+     <p>When working on an actual site, minifiers will run on the server, like <a href="https://www.npmjs.com/package/node-minify">node-minify</a>. Larger projects tend to incorporate minifiers into their build script with tools like <a href="https://gulpjs.com/">Gulp</a>.</p>
+   </section>
+   <section id="databases">
+    <h2>Databases</h2>
+    <p>Databases are how websites store data. They are a pain to work with. There is a demo of a database interface at <a href="https://www.phpmyadmin.net/">the PHPMyAdmin site</a>.</p>
+    <p>PHPMyAdmin is the standard way of interfacing with SQL databases. There are other kinds of databases, like <a href="https://www.mongodb.com/">MongoDB</a>, that are much more flexible and usually do not need as much administration.</p>
+   </section>
+   <section id="semesterEnd">
+     <h2>Wrap up</h2>
+     <p>Thanks for coming to these workshops!</p>
+   </section>
+	</div>
+ </body>
+</html>
