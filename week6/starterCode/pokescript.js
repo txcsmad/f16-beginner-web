@@ -1,6 +1,8 @@
 var makeRequest = function() {
     var req = new XMLHttpRequest();
+    window.req = req;
     req.open("GET", "http://pokeapi.co/api/v2/pokemon/1");
+    req.setRequestHeader("Access-Control-Allow-Origin", "*");
     req.send();
     
     

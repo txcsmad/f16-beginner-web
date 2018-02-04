@@ -11,6 +11,12 @@ a {
 	display: none;
 }
 
+.fitimg {
+  background-color: orange;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .toc-elem {
   text-transform: uppercase;
   font-size: 1.4rem;
