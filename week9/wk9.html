@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Intro To Web 9</title>
-	<link rel="stylesheet" href="../css/normalize.css">
+	  <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/skeleton.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -26,7 +26,7 @@
             </section>
         </div>
         <div class="panel two columns" id="toc">
-            <h5 class="toc-elem current-page"><a href="../week1/wk1.html">Week 1</a></h5>
+            <h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
             <h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
             <h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
             <h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
@@ -34,50 +34,40 @@
             <h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
             <h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
             <h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
-            <h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
+            <h5 class="toc-elem current-page"><a href="../week9/wk9.html">Week 9</a></h5>
         </div>
       </div>
       <section id="partialspart2">
-        <p><code><pre>
-  <% include path/to/partial/partialname %>
-        </pre></code></p>
+        <pre><code><% include path/to/partial/partialname %></code></pre>
         <p>That will put the HTML in the partial wherever that statement is. The partial will also recieve all the variables in the main view, so it can output variable data in much the same way.</p>
-        <p><code><pre>
-  <%= varname %>
-        </pre></code></p>
+        <pre><code><%= varname %></code></pre>
       </section>
       <section id="code">
         <h2>Running Code in Views</h2>
         <p>Although most of your code should be in your router function, sometimes it is necessary to run a little code in the template. For example, iterating through an array:</p>
-        <p><code><pre>
-  &lt;% for(var i=0; i&lt;arr.length; i++){ %&gt;
-  &lt;p&gt;&lt;%= arr[i] %&gt;&lt;/p&gt;
-  &lt;p&gt;Hello!&lt;/p&gt;  
-  <% } %>
-        </pre></code></p>
+        <pre><code>&lt;% for(var i=0; i&lt;arr.length; i++){ %&gt;
+&lt;p&gt;&lt;%= arr[i] %&gt;&lt;/p&gt;
+&lt;p&gt;Hello!&lt;/p&gt;  
+<% } %></code></pre>
         <p>This will put each element of arr in a paragraph and put paragraphs with "Hello!" in them between each element of arr.</p>
         <p>Variables can also be assigned in these  brackets, so a partial can be included multiple times with different data each time.</p>
       </section>
       <section id="requests">
         <h2>Making Requests</h2>
         <p>Node JS doesn't have an XMLHttpRequest object, so it makes requests differently. Node's HTTP requests are very low level and are hard to use, so we're going to use an external package.</p>
-        <p><code><pre>
-  npm install request --save
-        </pre></code></p>
+        <pre><code>npm install request --save</code></pre>
         <p>This module makes requests much easier to make. You simply pass the URL and a callback to execute when the response is returned.</p>
-        <p><code><pre>
-  var request = require("request");
-  var num = 100;
-  request("http://pokeapi.co/api/v2/pokemon/" + num,
-    function(err, response, body){
-      if(!err && response.statusCode === 200){
-        var poke = JSON.parse(body);
-        var out = {};
-        out.title = poke.name;
-        res.render("index", out);
-      }
-    });
-        </pre></code></p>
+        <pre><code>var request = require("request");
+var num = 100;
+request("http://pokeapi.co/api/v2/pokemon/" + num,
+  function(err, response, body){
+    if(!err && response.statusCode === 200){
+      var poke = JSON.parse(body);
+      var out = {};
+      out.title = poke.name;
+      res.render("index", out);
+    }
+  });</pre></code></p>
         <p>This contacts the PokeAPI and gets a response, then parses the JSON document recieved and passes the name of the pokemon to the template.</p>
       </section>
     </div>
