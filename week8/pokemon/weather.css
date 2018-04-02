@@ -1,0 +1,17 @@
+
+input[type="text"], input[type="text"]:focus {
+	/* note: this style cascades over skeleton's styles
+	   because it is the same level of specificity
+	   and is loaded later in the HTML */
+	font-family: Montserrat;
+	font-weight: 600;
+	font-size: 3rem;
+	margin-top: 5%;
+	border: unset;
+}
+
+#pkmn-output {
+	font-family: Montserrat;
+	font-weight: 400;
+	margin-left: 6.5%;
+}

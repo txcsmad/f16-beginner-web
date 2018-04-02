@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% for(x = 1; x < 6; x++) { %>
+    	<h<%= x %>>Welcome to <%= title %></h<%= x %>>
+    <% } %>
+    <% message = "bye"; %>
+    <% include partials/test %>
+  </body>
+</html>

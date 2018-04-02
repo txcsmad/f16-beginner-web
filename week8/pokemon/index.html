@@ -1,0 +1,22 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Vue Weather App</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../css/normalize.css">
+        <link rel="stylesheet" href="../../css/skeleton.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="weather.css">
+    </head>
+    <body>
+        <div class="container" id="app">
+            <div class="row">
+                <input v-model="pokemon" v-on:keyup.enter="getPokemon" placeholder="Enter your pokemon" class="twelve columns" type="text"></input>
+                <img v-for="pkmnImage in pkmnImages" v-bind:src="pkmnImage">
+            </div>
+        </div>
+    </body>
+    <!-- debug url<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="weather.js"></script>
+</html>
