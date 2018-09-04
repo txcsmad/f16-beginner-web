@@ -1,5 +1,11 @@
 html {
-	background-color: #DADFE1;
+	/*background-color: #DADFE1;*/
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3 {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
 }
 
 a {
@@ -18,9 +24,10 @@ a {
 }
 
 .toc-elem {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
+  font-family: 'Nunito Sans';
   font-size: 1.4rem;
-  letter-spacing: .2rem;
+  letter-spacing: .1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
