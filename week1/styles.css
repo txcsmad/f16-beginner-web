@@ -1,7 +1,6 @@
-
 html{
   background-color: #eee;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20pt;
 }
 body{
@@ -34,9 +33,12 @@ code{
 }
 h1{
   font-size: 64px;
+  font-family: Lato;
+  font-weight: 700;
   margin: 30px auto;
 }
 h2{
   font-size: 40px;
   border-bottom: 1px solid #888888;
+  font-family: Lato;
 }
