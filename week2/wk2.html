@@ -1,111 +1,112 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="utf-8">
-	<title>Basic Object Oriented Programming</title>
-	<link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/skeleton.css">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="../custom.css">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic Object Oriented Programming</title>
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/skeleton.css">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <div id="app" class="container">
+            <div class="row">
+                <toc :current="OOP"></toc>
+                <body-container>
+                    <section>
+                        <h5 class="subtitle">Week 2</h5>
+                        <h1>Basic Object Oriented JS</h1>
+                        <p>An <strong>object</strong> is a way to represent information about <strong>state</strong> and <strong>behavior</strong> in one package. Objects are fundamental to the structure of the web and most apps in general.</p>
+				        <p>JavaScript objects are quite different from the objects of other languages, so let's get familiar with them. Then we can start using them to actually manipulate HTML on the page.</p>
+				        <p>In Javascript, objects are essentially represented by a structure that associates keys with values. A key is a string that is the name of something and a value can be anything that you want to associate with that key. In other languages, this data structure is called dictionary or map.</p>
+                        <p>As a side note, keys can be also be called fields or properties</p>
+				        <img src="https://mightybuddy.files.wordpress.com/2013/03/hash1.png?w=500">
+				        <pre><code>//Create a new object with object literal
+var newObj = {};
 
-  </head>
-  <body>
-  	<div class="container">
-  		<div class="row">
-  			<img src="https://txcsmad.com/static/images/MAD-logo.png" class="fitimg">
-  		</div>
-
-  	 <div class="row">
-  		<div class="ten columns" id="titleSection">
-  		<h1>Basic Object Oriented Programming</h1>
-		<p>JavaScript objects are quite different from the objects of other languages, so let's get familiar with them. Then we can start using them to actually manipulate HTML on the page.</p>
-		<p>They're a bit like HashMaps, which is to say that we don't need to list variables beforehand. We just create new ones whenever we want inside of out objects but putting a . after the object name.</p>
-		<img src="https://mightybuddy.files.wordpress.com/2013/03/hash1.png?w=500">
-		<pre>
-			<code>//Create a new object with object literal
-var newObj={};
-
-//Create a new variable
-//called five inside newObj
-newObj.five=5;
+//Add a property called "five"
+newObj.five = 5;
 	
-//Gets five out (which is 5),
-//adds 1, and puts it in newObj.six
-newObj.six=newObj.five+1;
+//Take value of "five" and add it
+//to new property called "six"
+newObj.six = newObj.five + 1;
 
-//Using brackets is just as good
-newObj["six"];  //returns 6</code>
-	    </pre>
-	  </div>
-	  <div class="panel two columns" id="toc">
-	  	<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
-	  	<h5 class="toc-elem current-page"><a href="">Week 2</a></h5>
-	  	<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
-	  	<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
-	  	<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
-	  	<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
-	  	<h5 class="toc-elem"><a href="../week7/wk7.html">Week 7</a></h5>
-	  	<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
-	  	<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
-	  </div>
-	 </div>
-	  
-	  <section id="windowAndDocument">
-		<h2>Special Objects</h2>
-		<p>We've actually  been using the <code>window</code> object the whole time! All variables declared with var live there, and any code not assigned to an object automatically gets assigned to it. Let's take a look:</p>
-		<pre>
-<code>var variableNamesAreHard=1024;
-window.variableNamesAreHard++;
+//Another way to create this object
+var newObj2 = {
+    five: 5
+};
+
+//You can also use brackets instead of a "."
+newObj["six"];  //returns 6</code></pre>
+                        <h5>Try it!</h5>
+                        <p>Here are some exercises you can try to get familiar with Javascript objects:</p>
+                        <ul>
+                            <li>Add a field called <code>innerObj</code> to newObj</li>
+                            <li>Set this field equal to a new object with a number field and a string field</li>
+                            <li>Access these fields with both the bracket syntax and the dot syntax</li>
+                        </ul>
+	  		        </section>
+	                <section id="windowAndDocument">
+		                <h2>Special Objects</h2>
+		                <p>We've actually been using the <code>window</code> object the whole time! All variables declared with <code>var</code> live there, and any code not assigned to an object automatically gets assigned to it. Let's take a look:</p>
+		                <pre><code>var variableNamesAreHard = 1024;
+window.variableNamesAreHard++; // increment the variable to 1025
 
 //Returns 1025
-window["variableNamesAreHard"];</code>
-		</pre>
-		<p>Just like that new object we made earlier, except this one has a lot of stuff predefined for you.</p>
+window["variableNamesAreHard"];</code></pre>
+		                <p>The window object is just like that new object we made earlier, except this one has a lot of stuff predefined for you.</p>
 
-		<p>Another object of significance that's defined for you is <code>document</code>. This one contains all of the HTML code of the page. We can get HTML objects in our code by using a function in the object: <code>document.getElementById</code>. We can then access and modify the text inside using the <code>innerText</code> property.</p>
-		<img class="embeddedimg" src="http://www.html-helper.net/wp-content/uploads/2013/07/HTML.jpg">
-		<p>Let's try it out! The next section has a lot of common HTML tags defined with <code>id</code>s. Pick one and try to change its contents.</p>
-		<p>For example, since Web is the most important thing that MAD does, let's move it to the top of the list that's below, in the Testing Ground section.</p>
-		<pre>
-<code>var topOfList=document.getElementById("firstli");
+                        <h5>Try it!</h5>
+                        <p>Add a property to the window object and try accessing it as a local variable.</p>
+
+		                <p>Another object of significance that's defined for you is <code>document</code>. This one contains all of the HTML code of the page. We can get HTML objects in our code by using a function in the object: <code>document.getElementById</code>. We can then access and modify the text inside using the <code>innerText</code> property.</p>
+		                <img class="embeddedimg" src="http://www.html-helper.net/wp-content/uploads/2013/07/HTML.jpg">
+
+		                <p>Let's try it out! The next section has a lot of common HTML tags defined with <code>id</code>s. Pick one and try to change its contents.</p>
+		                <p>For example, since Web is the most important thing that MAD does, let's move it to the top of the list that's below, in the Testing Ground section.</p>
+		                <pre><code>var topOfList=document.getElementById("firstli");
 var third=document.getElementById("thirdli");
 var lessImportant=topOfList.innerText;
 topOfList.innerText=third.innerText;
-third.innerText=lessImportant;</code>
-		</pre>
-	  </section> 
+third.innerText=lessImportant;</code></pre>
+	                </section> 
+                    <section id="domExplanation">
+                        <h2>The Document Object Model</h2>
+                        <p>The document object that you can access through the console is actually part of a larger design paradigm known as the document object model or "DOM". Initially, JavaScript and the DOM were very closely related, but both have evolved into separate entities.</p>
+                        <p tag="advanced">The DOM is structured with a single <strong>document</strong> object and many HTML <strong>element</strong> objects. Each element also extends a more general interface known as a <strong>node</strong>. For more information, check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction#What_is_the_DOM">MDN docs</a>.</p> 
+                    </section>
 
-	  <section id="testingGround">
-		<h2 id="testingGroundTitle">Testing Ground</h2>
-		<p id="MAD">MAD teaches:</p>
-		<ul id="listOfMAD">
-		  <li id="firstli">iOS</li>
-		  <li id="secondli">Android</li>
-		  <li id="thirdli">Web</li>
-		  <li id="fourthli">Windows</li>
-		</ul>
-		<p id="js">JavaScript is the language of the Web. Try modifying this line with JavaScript. The steps for how to do that are listed above.</p>
-		<img id="image" width=200 height=200 src="http://www.writeraccess.com/blog/wp-content/uploads/2014/08/blog-html-5.png">
-		<p id="imgDescription">Above this text is an image! They're a bit more complicated than text, so as a challenge you can try to access its properties. The most important is src, which is where the file for the image lives.</p>
-		<a id="link" href="https://xkcd.com">This is a link! As another challenge, try to figure out how to access its properties, like href (where the link points).</a>
-		<p id="bookQuote">"In the beginning, the universe was created. This has made a lot of people very angry and has widely been regarded as a bad move."<i>-Douglas Adams, Hitchhiker's Guide to the Galaxy</i></p>
-		<div id="gameQuote">"Demand to see life's manager! Make life rue the day it thought it could give <strong>Cave Johnson</strong> lemons! Do you know who I am? I'm the man who's going to burn your house down! With the lemons! I'm going to get my engineers to invent a combustible lemon that burns your house down!"<i>-Cave Johnson, Portal 2</i></div>
-		<br>
-	  </section>
+	                <section id="testingGround">
+                        <h2 id="testingGroundTitle">Testing Ground</h2>
+                        <p id="MAD">MAD teaches:</p>
+                        <ul id="listOfMAD">
+                            <li id="firstli">iOS</li>
+                            <li id="secondli">Android</li>
+                            <li id="thirdli">Web</li>
+                            <li id="fourthli">Windows</li>
+                        </ul>
+                        <p id="js">JavaScript is the language of the Web. Try modifying this line with JavaScript. The steps for how to do that are listed above.</p>
+                        <img id="image" width=200 height=200 src="http://www.writeraccess.com/blog/wp-content/uploads/2014/08/blog-html-5.png">
+                        <p id="imgDescription">Above this text is an image! They're a bit more complicated than text, so as a challenge you can try to access its properties. The most important is src, which is where the file for the image lives.</p>
+                        <a id="link" href="https://xkcd.com">This is a link! As another challenge, try to figure out how to access its properties, like href (where the link points).</a>
+                        <p id="bookQuote">"In the beginning, the universe was created. This has made a lot of people very angry and has widely been regarded as a bad move."<i>-Douglas Adams, Hitchhiker's Guide to the Galaxy</i></p>
+                        <div id="gameQuote">"Demand to see life's manager! Make life rue the day it thought it could give <strong>Cave Johnson</strong> lemons! Do you know who I am? I'm the man who's going to burn your house down! With the lemons! I'm going to get my engineers to invent a combustible lemon that burns your house down!"<i>-Cave Johnson, Portal 2</i></div>
+                        <br>
+                    </section>
 
-	  <section id="conclusion">
-		<h2>Wrap Up</h2>
-		<p>We learned how to manipulate an HTML page from JavaScript code. To do that, we also learned a bit about HTML tags.</p>
-	  <p>
-		Thanks for coming!
-	  </p>
-	  </section>
-
-	  </div>
-	  </div>
-	</div>
+                    <section id="conclusion">
+                        <h2>Wrap Up</h2>
+                        <p>We learned how to manipulate an HTML page from JavaScript code. To do that, we also learned a bit about HTML tags.</p>
+                        <p>Thanks for coming!</p>
+                    </section>
+                </body-container>
+            </div>
+        </div>
    </body>
+   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+   <script src="../components.js"></script>
+   <script src="wk2.js"></script>
 </html>
 
 	  
