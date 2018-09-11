@@ -18,18 +18,29 @@ a {
 }
 
 .fitimg {
-  background-color: orange;
-  max-width: 100%;
-  box-sizing: border-box;
+    background-color: orange;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .toc-elem {
-  /*text-transform: uppercase;*/
-  font-family: 'Nunito Sans';
-  font-size: 1.4rem;
-  letter-spacing: .1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+    font-family: 'Nunito Sans';
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    font-family: 'Nunito Sans';
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    margin-bottom: -5px; 
+    margin-left: 3px;
 }
 
 .current-page {
@@ -44,4 +55,5 @@ a {
 .container {
 	padding: 2%;
 	background-color: #fefdfb;
+	margin-left: 18%;
 }
