@@ -1,0 +1,17 @@
+/* 
+	CSS for basic Tic Tac Toe app
+*/
+
+td {
+	width: 200px;
+	height: 200px;
+}
+
+.hFJ9Ve {
+    fill: none;
+    stroke: black;
+    stroke-width: 16px;
+    transition: stroke-dashoffset 0.225s cubic-bezier(0.4,0,0.2,1);
+    transition: stroke-dashoffset 0.225s cubic-bezier(0.4,0,0.2,1);
+        transition-duration: 0.225s;
+}
