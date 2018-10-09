@@ -5,7 +5,6 @@ var makeRequest = function() {
     req.setRequestHeader("Access-Control-Allow-Origin", "*");
     req.send();
     
-    
     var jsonResponse;
     
     // Call this function when ready
