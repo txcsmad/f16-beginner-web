@@ -1,91 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="utf-8">
-	<title>Making a Server</title>
-	<link rel="stylesheet" href="../css/normalize.css">
-	<link rel="stylesheet" href="../css/skeleton.css">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="../custom.css">
-  </head>
-  <body>
-  	<div class="container">
-  		<div class="row">
-  			<img src="https://txcsmad.com/static/images/MAD-logo.png" class="fitimg">
-  		</div>
-  		<div class="row">
-  			<section class="ten columns" id="titleSection">
-  				<h1>Making a Server</h1>
-  				<p>This week, we're going to set up the tools you will need to build a (very) basic backend. We are going to install a server side language called NodeJS and set up the Express backend framework.</p>
-  				<p>We will also review some of the concepts that make backend programming possible, such as asynchronous functions.</p>
-	  		</section>
-	  		<div class="panel two columns" id="toc">
-  				<h5 class="toc-elem"><a href="../week1/wk1.html">Week 1</a></h5>
-  				<h5 class="toc-elem"><a href="../week2/wk2.html">Week 2</a></h5>
-  				<h5 class="toc-elem"><a href="../week3/wk3.html">Week 3</a></h5>
-  				<h5 class="toc-elem"><a href="../week4/wk4.html">Week 4</a></h5>
-  				<h5 class="toc-elem"><a href="../week5/wk5.html">Week 5</a></h5>
-  				<h5 class="toc-elem"><a href="../week6/wk6.html">Week 6</a></h5>
-  				<h5 class="toc-elem current-page"><a href="../week7/wk7.html">Week 7</a></h5>
-  				<h5 class="toc-elem"><a href="../week8/wk8.html">Week 8</a></h5>
-  				<h5 class="toc-elem"><a href="../week9/wk9.html">Week 9</a></h5>
-  			</div>
-  		</div>
-  		<section id="async">
-			<h2>Asynchronous functions</h2>
-			<p>Programs are considered <i>asynchronous</i> when the code executes in a different order than it's written. We do that so we can execute other statements while waiting.</p>
-			<p>We've already looked a little at JavaScript asynchronous functions like setInterval and setTimeout, but let's take a proper look at it.</p>
-			<img src="diagram.jpg" width="700" height="400"></img>
-			<p>JavaScript isn't actually asynchronous, that is, it doesn't switch back and forth between two tasks. Instead, it maintains an event queue. Functions like setTimeout tell the queue to add a certain function after a given amount of time.</p>
-			<pre><code>// Will output "Function ended"
-// And then "TIMED OUT"			  
+    <head>
+	   <meta charset="utf-8">
+	   <title>Making a Server</title>
+	   <link rel="stylesheet" href="../css/normalize.css">
+	   <link rel="stylesheet" href="../css/skeleton.css">
+	   <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Open+Sans" rel="stylesheet">
+	   <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <div id="app" class="container">
+            <toc :current="Servers"></toc>
+            <body-container>
+                <section id="titleSection">
+                    <h5 class="subtitle">Week 7</h5>
+                    <h1>Making a Server</h1>
+                    <p>This week, we're going to set up the tools you will need to build a (very) basic backend. We are going to install a server side language called NodeJS and set up the Express backend framework.</p>
+                    <p>We will also review some of the concepts that make backend programming possible, such as asynchronous functions.</p>
+                </section>
+                <section id="async">
+                    <h2>Asynchronous functions</h2>
+                    <p>Programs are considered <i>asynchronous</i> when the code executes in a different order than it's written. We do that so we can execute other statements while waiting.</p>
+                    <p>We've already looked a little at JavaScript asynchronous functions like setInterval and setTimeout, but let's take a proper look at it.</p>
+                    <img src="diagram.jpg" width="700" height="400"></img>
+                    <p>JavaScript isn't actually asynchronous, that is, it doesn't switch back and forth between two tasks. Instead, it maintains an event queue. Functions like setTimeout tell the queue to add a certain function after a given amount of time.</p>
+                    <pre><code>// Will output "Function ended"
+// And then "TIMED OUT"           
 function takeALongTime(time) {
-	var max = Date.now() + time;
+    var max = Date.now() + time;
     while(Date.now() < max);
     console.log("Function ended");
 }
 setTimeout(function() { 
-	console.log("TIMED OUT"); }, 5);
-	takeALongTime(5000);</code></pre>
-			<p>takeALongTime is treated as one element of the event queue, which finishes first, then the setTimeout added after the function runs.</p>
-	  	</section>
-	  	<section id="terminal">
-			<h2>Terminal</h2>
-			<p>As preparation for next week's workshop on how to make a server, let's try to use the terminal, also known as command prompt on Windows.</p>
-			<p>For anyone using Windows, while using command prompt is an option, it's kind of a pain to use. Try installing <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Ubuntu on Windows</a> if you're running the latest version of windows 10. It installs a full linux terminal on your machine that can access all the same files, with the drawback that you can't launch applications from it. If you're not on the latest version of Windows, try <a href="https://www.cygwin.com/">Cygwin</a>, which does something similar but is supported by a different group of people.</p>
-			<p>Today, we're just going to focus on using cd and ls (dir on windows) to navigate the file structure.</p>
-			<img src="http://linuxcommand.org/images/Screenshot-Terminal.png">
-	  	</section>
-	  	<section id="setup">
-			<h2>Setup</h2>
-			<p>First we need to install a few tools to get a platform where we can make a server. Install <a href="https://nodejs.org/en/">NodeJS</a> to get JavaScript locally running on your computer. This provides two new commands we can use in out terminal to make applications.</p>
-			<p>The first new command is node. Typing in node by itself gives you something like the console in your browser to test code in. You can also give a filename to node to run the JavaScript code in that file.</p>
-			<pre><code>node // Open the console
-// Ctrl-c twice to exit
+    console.log("TIMED OUT"); 
+}, 5);
+takeALongTime(5000);</code></pre>
+                    <p>takeALongTime is treated as one element of the event queue, which finishes first, then the setTimeout added after the function runs.</p>
+                </section>
+                <section id="terminal">
+                    <h2>Terminal</h2>
+                    <p>As preparation for next week's workshop on how to make a server, let's try to use the terminal, also known as command prompt on Windows.</p>
+                    <p>For anyone using Windows, while using command prompt is an option, it's kind of a pain to use. Try installing <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Ubuntu on Windows</a> if you're running the latest version of windows 10. It installs a full linux terminal on your machine that can access all the same files, with the drawback that you can't launch applications from it. If you're not on the latest version of Windows, try <a href="https://www.cygwin.com/">Cygwin</a>, which does something similar but is supported by a different group of people.</p>
+                    <p>Today, we're just going to focus on using cd and ls (dir on windows) to navigate the file structure.</p>
+                    <img src="http://linuxcommand.org/images/Screenshot-Terminal.png">
+                </section>
+                <section id="setup">
+                    <h2>Setup</h2>
+                    <p>First we need to install a few tools to get a platform where we can make a server. Install <a href="https://nodejs.org/en/">NodeJS</a> to get JavaScript locally running on your computer. This provides two new commands we can use in out terminal to make applications.</p>
+                    <p>The first new command is node. Typing in node by itself gives you something like the console in your browser to test code in. You can also give a filename to node to run the JavaScript code in that file.</p>
+                    <pre><code>node // Open the console
+        // Ctrl-c twice to exit
 
-// Run code in code.js
-node code.js</code></pre>
-			<p>The second new command is npm. This is the Node Package Manager, where we can install new JavaScript packages and get added capabilities. NodeJS is very barebones, so they make packages as easy to get as possible to actually create applications. We're going to install Express, a popular web server tool, to develop our application.</p>
-			<pre><code>npm install --global express-generator</code></pre>
-			<p>This adds another command called express that autogenerates a lot of the files we need for a server.</p>
-			<p>Now to create a server application:</p>
-			<pre><code>express -e myfirstserver</code></pre>
-			<p>This will create a new application in a folder created in the current directory. That application, when run, will accept HTTP requests and send files. It will give the command to run the application when it is generated.</p>
-			<p>What we have now is technically a fully functioning server, but looking at how it works will be much more important. That way new pages and new capabilities can be added.</p>
-	  	</section>
-	  	<section id="processing">
-			<h2>Processing a Request</h2>
-			<p>Let's look at what a request goes through when recieved to get a feel for what components need to be modified.</p>
-			<p>First, the program checks to see if the request is asking for a file in the public folder. If that is the case, the page is sent immediately. This saves a lot of time if a static page is required.</p>
-			<p>Next, some preprocessing is done with <i>middleware</i>. This extracts cookies, what the request is asking for, any data sent in the request, and any other information needed. The request is then sent by a <i>router</i> to the appropriate function that processes it based on what page it was asking for. For example, if the server has a function for all pages of the form "/test/:id", then a request like http://mypage.com/test/12 will get processed by this function, where req.params.id will be 12. Then the function can do any processing required and create variables to be sent to the user.</p>
-			<p>Finally, all necessary variables are passed to a <i>template</i>. This template looks a lot like HTML with some extra spaces to put data from variables in before sending the data to the user. Once all the varaibles are inserted, then the result is sent to the user as HTML like a simple page would be.</p>
-	  	</section>
-	  	<section id="files">
-			<h2>Project Structure</h2>
-			<img src="structure.png">
-			<p>Now that we have a high level idea of how the server works, we need to go into the individual files. Some of these autogenerated files are best left alone, but specifically the public, routes, and views folders will be heavily modified to create a fully functioning site.</p>
-	  	</section>
-  	</div>
-   </body>
+        // Run code in code.js
+        node code.js</code></pre>
+                    <p>The second new command is npm. This is the Node Package Manager, where we can install new JavaScript packages and get added capabilities. NodeJS is very barebones, so they make packages as easy to get as possible to actually create applications. We're going to install Express, a popular web server tool, to develop our application.</p>
+                    <pre><code>npm install --global express-generator</code></pre>
+                    <p>This adds another command called express that autogenerates a lot of the files we need for a server.</p>
+                    <p>Now to create a server application:</p>
+                    <pre><code>express -e myfirstserver</code></pre>
+                    <p>This will create a new application in a folder created in the current directory. That application, when run, will accept HTTP requests and send files. It will give the command to run the application when it is generated.</p>
+                    <p>What we have now is technically a fully functioning server, but looking at how it works will be much more important. That way new pages and new capabilities can be added.</p>
+                </section>
+                <section id="processing">
+                    <h2>Processing a Request</h2>
+                    <p>Let's look at what a request goes through when recieved to get a feel for what components need to be modified.</p>
+                    <p>First, the program checks to see if the request is asking for a file in the public folder. If that is the case, the page is sent immediately. This saves a lot of time if a static page is required.</p>
+                    <p>Next, some preprocessing is done with <i>middleware</i>. This extracts cookies, what the request is asking for, any data sent in the request, and any other information needed. The request is then sent by a <i>router</i> to the appropriate function that processes it based on what page it was asking for. For example, if the server has a function for all pages of the form "/test/:id", then a request like http://mypage.com/test/12 will get processed by this function, where req.params.id will be 12. Then the function can do any processing required and create variables to be sent to the user.</p>
+                    <p>Finally, all necessary variables are passed to a <i>template</i>. This template looks a lot like HTML with some extra spaces to put data from variables in before sending the data to the user. Once all the varaibles are inserted, then the result is sent to the user as HTML like a simple page would be.</p>
+                </section>
+                <section id="files">
+                    <h2>Project Structure</h2>
+                    <p>Now that we have a high level idea of how the server works, we need to go into the individual files. Some of these autogenerated files are best left alone, but specifically the public, routes, and views folders will be heavily modified to create a fully functioning site.</p>
+                </section>
+            </body-container>
+        </div>
+    </body>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <script src="../components.js"></script>
+    <script src="wk7.js"></script>
 </html>
