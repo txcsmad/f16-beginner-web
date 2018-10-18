@@ -11,8 +11,6 @@ function retrieveStats(statsOut, rawStats) {
     }
 }
 
-/*function findWinner(statName, pokeNum, )*/
-
 var app = new Vue({
     el: '#app',
     data: {
