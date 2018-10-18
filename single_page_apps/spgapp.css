@@ -1,0 +1,28 @@
+/* CSS for Single Page App Demo
+*/
+
+/* Custom Input Form */
+
+/* horizontally center */
+.input-holder {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#pokemon1, #pokemon2 {
+	border-width: 0px;
+	border-bottom: 2px solid #95a5a6;
+	border-radius: 0px;
+	width: 75%;
+}
+
+/* Pokemon */
+
+.winner-text {
+	color: #2ecc71;
+}
+
+.loser-text {
+	color: #e74c3c;
+}

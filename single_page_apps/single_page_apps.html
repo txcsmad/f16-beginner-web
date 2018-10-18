@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Intro to Single Page Applications</title>
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/skeleton.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="../custom.css">
+		<link rel="stylesheet" type="text/css" href="spgapp.css">
+	</head>
+	<body>
+		<div id="app" class="container">
+			<div style="display: flex; justify-content: center;">
+				<h1>Choose Your Pokemon</h1>
+			</div>
+			<div class="row">
+				<div class="six columns">
+					<div class="input-holder">
+						<input v-model.trim="pokemonName1" placeholder="Pokemon 1" id="pokemon1" type="text">
+						<img v-bind:src="pokemon1URL" width="200px" height="200px">
+					</div>
+					<div class="input-holder">
+						<h4 ref="pokeMessage1">Who's that Pokemon?</h4>
+					</div>
+					<div class="input-holder">
+						<table style="width: 70%;">
+							<thead>
+								<tr>
+									<th>Stat</th>
+									<th>Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ref="speed1">
+									<td>Speed</td>
+									<td></td>
+								</tr>
+								<tr ref="attack1">
+									<td>Attack</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+			    </div>
+			    <div class="six columns">
+			    	<div class="input-holder">
+			    		<input v-model.trim="pokemonName2" placeholder="Pokemon 2" id="pokemon2" type="text">
+			    		<img v-bind:src="pokemon2URL" width="200px" height="200px">
+			    	</div>
+			    	<div class="input-holder">
+						<h4 ref="pokeMessage2">Who's that Pokemon?</h4>
+					</div>
+					<div class="input-holder">
+						<table style="width: 70%;">
+							<thead>
+								<tr>
+									<th>Stat</th>
+									<th>Value</th>
+								</tr>
+							</thead>
+						  <tbody>
+						    <tr ref="speed2">
+						      <td>Speed</td>
+						      <td></td>
+						    </tr>
+						    <tr ref="attack2">
+						      <td>Attack</td>
+						      <td></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+			    </div>
+			</div>
+
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+	<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+	<script> const P = new Pokedex.Pokedex({protocol: 'https'}); </script>
+	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+   	<script src="../components.js"></script>
+   	<script src="spgapp.js"></script>
+</html>

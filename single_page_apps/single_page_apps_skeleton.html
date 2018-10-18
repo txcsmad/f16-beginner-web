@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Intro to Single Page Applications</title>
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/skeleton.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="../custom.css">
+		<link rel="stylesheet" type="text/css" href="spgapp.css">
+	</head>
+	<body>
+		<div id="app" class="container">
+			
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+	<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+	<script> const P = new Pokedex.Pokedex({protocol: 'https'}); </script>
+	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+   	<script src="../components.js"></script>
+   	<script src="spgapp.js"></script>
+</html>

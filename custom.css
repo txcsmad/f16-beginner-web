@@ -3,7 +3,7 @@ html {
 	font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h5 {
 	font-family: 'Nunito Sans';
 	font-weight: 700;
 }
@@ -56,4 +56,31 @@ a {
 	padding: 2%;
 	background-color: #fefdfb;
 	margin-left: 18%;
+}
+
+.title-flex-container {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 2.5%;
+}
+
+.title-mad-logo {
+    height: 100px; 
+    margin-right: 3%;
+}
+
+.card-container {
+    display: flex; 
+    margin-top: 2%;
+    flex-wrap: wrap;
+}
+
+.card-container div {
+    margin-right: 6%;
+    margin-bottom: 3%;
+}
+
+.card-container div img {
+    height: 150px;
 }
