@@ -32,11 +32,13 @@
                 <section id="Vue">
                     <h2>Vue</h2>
                     <div class="row">
-                        <div class="one-half column">
-                            VueJS is a front end framework that is easy to read and use. Although the core library is for view rendering, it can also support single page applications (replacing the backend with just a front end framework). We'll do a tutorial with Vue so everyone can get some hands on experience. <a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/">Use this link to access the JSFiddle.</a>
-                        </div>
-                        <div class="one-half column"><img src="vuejs-logo.jpg" width="80%" height="80%"></div>
+                    <p class="six columns">
+                        VueJS is a front end framework that is easy to read and use. Although the core library is for view rendering, it can also support single page applications (replacing the backend with just a front end framework). We'll do a tutorial with Vue so everyone can get some hands on experience. <a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/">Use this link to access the JSFiddle.</a>
+                    </p>
+                    <img src="vuejs-logo.jpg" class="six columns">
                     </div>
+                </section>
+                <section>
                     <h3>Declarative Rendering</h3>
                     <p>Vue works by handling everything from an instance of the "Vue" object, which you set up in javascript attached to the HTML file. You also need to include Vue in your HTML via a script tag.</p>
                     <pre><code>&lt;div id="app"&gt;
@@ -51,11 +53,15 @@
                     <p>This concept is at the heart of Vue. Basically, you declare that a variable is equal to something and then you insert that variable into the HTML directly. You can also insert it by <strong>binding</strong> a property to the value of that variable.</p>
                     <pre><code>&lt;span v-bind:title="message"&gt;Some text.&lt;/div&gt;</code></pre>
                     <p>You do this by using the <strong>v-bind</strong> "directive". This means that you add the v-bind keyword and a colon in front of any HTML element property you want to tie the value of to a Vue variable.</p>
+                </section>
+                <section>
                     <h3>Conditions and Loops</h3>
                     <h4>v-if</h4>
                     <p>This directive allows you to control whether elements are displayed using booleans. You set "v-if" equal to the boolean variable you want it to rely on.</p>
                     <h4>v-for</h4>
                     <p>This directive allows you to include loop syntax in displaying the same HTML element multiple times with small changes. See the example in the starter code.</p>
+                </section>
+                <section>
                     <h3>User Input</h3>
                     <p>User input in Vue still uses the concept of Javascript event listeners, but simplifies the syntax.</p>
                     <pre><code>&lt;button v-on:click="reverseMessage"&gt;</code></pre>
