@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<meta charset="utf-8">
+		<title>Intro To Web</title>
+		<link rel="stylesheet" href="../css/normalize.css">
+    	<link rel="stylesheet" href="../css/skeleton.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="../custom.css">
+  	</head>
+  	<body>
+  		<div id="app" class="container">
+	  		<div class="row">
+		  		<toc :current="Intro"></toc>
+		  		<body-container>
+		  			<section id="Welcome">
+		  				<h5 class="subtitle">Week 1</h5>
+		  				<h1>Web 101</h1>
+		  				<p>This workshop will teach you <strong>basic front end</strong> web development. </p>
+		  				<p>In this class, you will (hopefully) learn:</p>
+		  				<ul>
+		  					<li>To understand HTML and CSS</li>
+		  					<li>How to write vanilla JavaScript</li>
+		  					<li>How JavaScript works and what it can do for you.</li>
+		  				</ul>
+		  				<h3>What you need</h3>
+		  				<p>Web development can be done on any computer, anywhere.</p>
+		  				<ul>
+		  					<li>An internet connection</li>
+		  					<li>A web browser</li>
+		  					<li>A text editor</li>
+		  				</ul>
+		  			</section>
+		  			<section id="HowFrontEndWorks">
+	  					<h2>How the Front End Works</h2>
+	  					<p>When you visit some website, your browser gets a lot of text, which it puts together to make the page that you see.</p>
+	  					<img class="embeddedimg" src="http://bulbulcse.com/wp-content/uploads/2016/06/c.png" width=440 height=280 style="margin-left: 60px; margin-bottom: 20px;">
+	  					<p>There are three main kinds of text that get sent to your browser:</p>
+	  					<ul>
+	  						<li>HyperText Markup Language (HTML), which is mostly a list of things that you're seeing.</li>
+							<pre><code>&lt;p&gt;When you visit some site...&lt;p&gt;</code></pre>
+							<li>Cascading StyleSheets (CSS), which defines how something looks. CSS adds styling to your page. </li>
+							<pre><code>html {
+		background-color: #eee;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20pt;
+	}</code></pre>
+							<li>JavaScript, the full programming language that runs on your browser. Its main purpose is to add interactivity.</li>
+							<pre><code>let i=7+4-3*2;
+	let hello="Hello World!";
+	console.log(hello);
+	console.log("7+4-3*2 is " + i);</code></pre>
+		    			</ul>w
+		  			</section>
+		  			<section id="KeepInMind">
+		  				<h3>Keep In Mind</h3>
+		  				<ul>
+		  					<li>JavaScript is the programming language you'll use to make your website interactive. Don't overuse it though, because it's the slowest thing on the page.</li>
+		  					<li>JavaScript is not Java. They make very different decisions about how they act as languages, even if they share a lot of superficial similarities.</li>
+		  					<li>When in class, <strong>don't focus on memorizing syntax.</strong> You will be writing code for the Internet here, so use the Internet to your advantage as much as possible.</li>
+		  				</ul>
+		  				<p> I personally recommend <a href="https://developer.mozilla.org/en-US/"> MDN, the Mozilla Developer Network,</a> and <a href="https://stackoverflow.com">Stack Overflow</a>. I do not recommend <strike>W3Schools</strike>.</p>
+		  				<p>That being said, the best way to learn is to jump in and write some code. Press the <code>F12</code> key (or if that doesn't work on Mac, press <code>Cmd+Option+J</code>) to open your browser's developer tools. You can also right click the page and click Inspect. For now, any browser is fine, but if you're going to do a lot of web development, you should be using either Chrome or Firefox. You can enter JavaScript code in the console tab.</p>
+		  				<div style="margin-left: 110px;">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Mozilla_Firefox_logo_2013.svg" class="embeddedimg" width=150 height=150>
+		            		<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Chrome_icon_%28September_2014%29.svg" class="embeddedimg" width=150 height=150 style="margin-left: 20px;">
+	            		</div>
+		  			</section>
+		  			<section id="Layout">
+		  				<h2>Understanding Layout</h2>
+						  <p>HTML defines the layout of a web page. You can think of it as defining nested boxes which rendered from the top to the bottom of the page.</p>
+						 <pre>
+							 	&lt;html&gt;
+								&lt;head&gt;
+									&lt;title&gt;My home page&lt;/title&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;h1&gt;My home page&lt;/h1&gt;
+									&lt;p&gt;Hello, I am Marijn and this is my home page.&lt;/p&gt;
+									&lt;p&gt;I also wrote a book! Read it
+									&lt;a href="https://www.google.com"&gt;here&lt;/a&gt;.&lt;/p&gt;
+								&lt;/body&gt;
+								&lt;/html&gt;
+						 </pre>
+		  				<img src="https://eloquentjavascript.net/img/html-boxes.svg" width=400 style="margin-left: 80px; margin-bottom: 20px;">
+		  				<p>The above page is an example of a layout that can be created with some simple HTML and CSS.</p>
+		  			</section>
+		  			<section id="FirstSteps">
+			  			<h2>First Lines of Code</h2>
+			  			<p>In most programming languages, <i>vars</i> are at the core of your code. They are places to put information that you will use later in your program, whether that information is a number, some text, a list of values, or a new kind of data you make up on your own.</p>
+			  			<p>Creating JavaScript vars is pretty straightforward. Use <code>let</code> before creating a new var, and once a new one is created, anything can be put in it, namely numbers and strings. To put something in the var, use <code>=</code>. Some examples:</p>
+						<pre><code>let a=5;
+	let b=8;
+	let c="Hello World!";
+	a="Hi World!";
+	c=3.14;</code></pre>
+						<p>We can also use basic math operations. Namely, +. -. *, and / work pretty much as expected with numbers and are called <i>binary operators</i>. </p>
+						<pre><code>5+8.3    //returns 13.3
+	let frac=3/5    //puts 0.6 in frac
+	4*(7-6+5)       //returns 24
+	3.7+2.5*5       //returns 14.7
+	div="a" + "bc"  //Reassigns frac to "abc"</code></pre>
+						<p>They work a little like functions: they take two inputs and give you back the result in its place. These pieces of code that the computer simplifies for you are called <i>expressions</i>. They're the basic building blocks of your code.</p>
+			  		</section>
+			  		<section id="Conditions">
+						<h2>Conditions</h2>
+						<p>In any programming language, it's important to make decisions based on some external factor, often the user. To do this, we use <i>booleans</i>, which are either true or false. They're almost always used to test if something is true, and then execute some code based on that. We can compare two numbers with binary operators like &gt;, &lt;, &gt;=, and &lt;=. You can also use the boolean operators !, &&, and || to combine and change your conditions.</p>
+						<pre><code>4>=6  //returns false
+	2<3 || 5<=3     //returns true
+	!(4.5>5 && 4>3) //returns false</code></pre>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Vennandornot.svg" class="embeddedimg" style="margin-bottom: 20px;" width="100%">
+						<p>However, equality is a bit more complicated, since = was already taken for the assignment operator. JavaScript uses == and ===. == tries to convert both values to the same type before comparing, while === doesn't.</p>
+						<pre><code>3=="3"         //returns true
+	3==="3"        //returns false
+	3===3          //returns true</code></pre>
+						<p>JavaScript is weakly typed, so that means that you can try to convert anything to anything else, including a boolean. If you do, only 0, NaN, and "" will return false, or be "falsey". There are a few more falsey values, but those are the only strings and numbers that are falsey.</p>
+					  </section>
+        <section id="windowAndDocument">
+		                <h2>Special Objects</h2>
+		                <p>We've actually been using the <code>window</code> object the whole time! All vars declared with <code>let</code> live there, and any code not assigned to an object automatically gets assigned to it. Let's take a look:</p>
+		                <pre><code>let varNamesAreHard = 1024;
+window.varNamesAreHard++; // increment the var to 1025
+
+//Returns 1025
+window["varNamesAreHard"];</code></pre>
+		                <p>The window object is just like that new object we made earlier, except this one has a lot of stuff predefined for you.</p>
+
+                        <h5>Try it!</h5>
+                        <p>Add a property to the window object and try accessing it as a local var.</p>
+
+		                <p>Another object of significance that's defined for you is <code>document</code>. This one contains all of the HTML code of the page. We can get HTML objects in our code by using a function in the object: <code>document.getElementById</code>. We can then access and modify the text inside using the <code>innerHTML</code> property.</p>
+
+		                <p>Let's try it out! The next section has a lot of common HTML tags defined with <code>id</code>s. Pick one and try to change its contents.</p>
+		                <p>For example, since Web is the most important thing that MAD does, let's move it to the top of the list that's below, in the Testing Ground section.</p>
+		                <pre><code>let topOfList=document.getElementById("firstli");
+let third=document.getElementById("thirdli");
+let lessImportant=topOfList.innerHTML;
+topOfList.innerHTML=third.innerHTML;
+third.innerHTML=lessImportant;</code></pre>
+	                </section> 
+                    <section id="domExplanation">
+                        <h2>The Document Object Model</h2>
+                        <p>The document object that you can access through the console is actually part of a larger design paradigm known as the document object model or "DOM". Initially, JavaScript and the DOM were very closely related, but both have evolved into separate entities.</p>
+                        <p tag="advanced">The DOM is structured with a single <strong>document</strong> object and many HTML <strong>element</strong> objects. Each element also extends a more general interface known as a <strong>node</strong>. For more information, check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction#What_is_the_DOM">MDN docs</a>.</p> 
+                    </section>
+
+	                <section id="testingGround">
+                        <h2 id="testingGroundTitle">Testing Ground</h2>
+                        <p id="MAD">MAD teaches:</p>
+                        <ul id="listOfMAD">
+                            <li id="firstli">iOS</li>
+                            <li id="secondli">Android</li>
+                            <li id="thirdli">Web</li>
+                            <li id="fourthli">Windows</li>
+                        </ul>
+                        <p id="js">JavaScript is the language of the Web. Try modifying this line with JavaScript. The steps for how to do that are listed above.</p>
+                        <img id="image" width=200 height=200 src="http://www.writeraccess.com/blog/wp-content/uploads/2014/08/blog-html-5.png">
+                        <p id="imgDescription">Above this text is an image! They're a bit more complicated than text, so as a challenge you can try to access its properties. The most important is src, which is where the file for the image lives.</p>
+                        <a id="link" href="https://xkcd.com">This is a link! As another challenge, try to figure out how to access its properties, like href (where the link points).</a>
+                        <p id="bookQuote">"In the beginning, the universe was created. This has made a lot of people very angry and has widely been regarded as a bad move."<i>-Douglas Adams, Hitchhiker's Guide to the Galaxy</i></p>
+                        <div id="gameQuote">"Demand to see life's manager! Make life rue the day it thought it could give <strong>Cave Johnson</strong> lemons! Do you know who I am? I'm the man who's going to burn your house down! With the lemons! I'm going to get my engineers to invent a combustible lemon that burns your house down!"<i>-Cave Johnson, Portal 2</i></div>
+                        <br>
+                    </section>
+
+
+				  	<section id="Finish">
+						<h2>Wrap Up</h2>
+						<p>We learned about three kinds of data that JavaScript can work with in vars: numbers, strings, and booleans. We also learned how to use these data types in expressions to have our program do basic manipulation of that data. Those expressions often have operators in them that tell our program what we want to do with our data.</p>
+						<p>The type of data we're working with isn't clearly defined when we write our code, so we have to keep in mind that we can mix types. That's sometimes what you want, but remember to keep it in mind. In more complicated programs, it results in some problems.</p>
+						<p>Thanks for coming! Let me know what you thought about this class by filling out <a href="http://bit.ly/2bUuccx">this anonymous survey.</a></p>
+				  	</section>
+	  			</body-container>
+  			</div>
+  		</div>
+    </body>
+   	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+   	<script src="../components.js"></script>
+  	<script src="wk1.js"></script>
+</html>
+
+	  

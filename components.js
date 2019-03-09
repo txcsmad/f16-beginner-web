@@ -4,7 +4,8 @@ Vue.component('toc', {
   },
   data: function () {
     pages = 
-      {"Intro": {"link" : "../week1/wk1.html"},
+      {"Web 101": {"link": "../web101/web101.html"},
+	"Intro": {"link" : "../week1/wk1.html"},
         "OOP": {"link": "../week2/wk2.html"},
         "Functions": {"link": "../week3/wk3.html"},
         "CSS": {"link": "../week4/wk4.html"},
@@ -19,7 +20,7 @@ Vue.component('toc', {
     return {
       'pages' : pages,
       'page_titles' : 
-        ["Intro", "OOP", "Functions", "CSS", "Layout", 
+        ["Web 101", "Intro", "OOP", "Functions", "CSS", "Layout", 
           "HTTP", "Servers", "Vue", "Templates"]
     }
   },
